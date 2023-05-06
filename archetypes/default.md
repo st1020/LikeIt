@@ -18,8 +18,6 @@ featuredImagePreview: ""
 
 hiddenFromHomePage: false
 hiddenFromSearch: false
-twemoji: false
-lightgallery: true
 ruby: true
 fraction: true
 fontawesome: true
@@ -34,8 +32,6 @@ code:
   maxShownLines: 50
 math:
   enable: false
-  # ...
-mapbox:
   # ...
 share:
   enable: true

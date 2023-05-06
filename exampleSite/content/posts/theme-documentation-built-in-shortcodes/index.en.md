@@ -14,8 +14,6 @@ resources:
 
 tags: ["shortcodes"]
 categories: ["documentation"]
-
-lightgallery: true
 ---
 
 **Hugo** provides multiple built-in shortcodes for author convenience and to keep your markdown content clean.
@@ -135,20 +133,6 @@ The rendered output looks like this:
 ## 6 ref and relref {#ref-and-relref}
 
 [Documentation of `ref` and `relref`](https://gohugo.io/content-management/shortcodes#ref-and-relref)
-
-## 7 tweet
-
-[Documentation of `tweet`](https://gohugo.io/content-management/shortcodes#tweet)
-
-Example `tweet` input:
-
-```markdown
-{{</* tweet 917359331535966209 */>}}
-```
-
-The rendered output looks like this:
-
-{{< tweet 917359331535966209 >}}
 
 ## 8 vimeo
 

@@ -51,13 +51,6 @@ other = "{{ .Hugo }} ద్వారా ఆధారితం | నేపథ్�
 # === partials/footer.html ===
 
 # === partials/comment.html ===
-[valineLang]
-# not supported
-other = "en"
-
-[valinePlaceholder]
-other = "మీ వాఖ్యనం ..."
-
 [facebookLanguageCode]
 other = "te_IN"
 
@@ -87,21 +80,7 @@ other = "te"
 
 [copyToClipboard]
 other = "క్లిప్‌బోర్డ్‌కు కాపీ చేయండి"
-
-[cookieconsentMessage]
-other = "ఈ వెబ్‌సైట్ మీ అనుభవాన్ని మెరుగుపరచడానికి కుకీలను ఉపయోగిస్తుంది."
-
-[cookieconsentDismiss]
-other = "అర్థమైంది"
-
-[cookieconsentLink]
-other = "మరింత తెలుసుకోండి"
 # === partials/assets.html ===
-
-# === partials/plugin/share.html ===
-[shareOn]
-other = "షేర్ ఆన్"
-# === partials/plugin/share.html ===
 
 # === posts/single.html ===
 [contents]

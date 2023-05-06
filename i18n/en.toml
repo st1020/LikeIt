@@ -50,12 +50,6 @@ other = "Powered by {{ .Hugo }} | Theme - {{ .Theme }}"
 # === partials/footer.html ===
 
 # === partials/comment.html ===
-[valineLang]
-other = "en"
-
-[valinePlaceholder]
-other = "Your comment ..."
-
 [facebookLanguageCode]
 other = "en_US"
 
@@ -84,21 +78,7 @@ other = "en"
 
 [copyToClipboard]
 other = "Copy to clipboard"
-
-[cookieconsentMessage]
-other = "This website uses Cookies to improve your experience."
-
-[cookieconsentDismiss]
-other = "Got it!"
-
-[cookieconsentLink]
-other = "Learn more"
 # === partials/assets.html ===
-
-# === partials/plugin/share.html ===
-[shareOn]
-other = "Share on"
-# === partials/plugin/share.html ===
 
 # === posts/single.html ===
 [contents]

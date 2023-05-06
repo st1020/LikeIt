@@ -51,12 +51,6 @@ other = "Сделано {{ .Hugo }} | Тема - {{ .Theme }}"
 # === partials/footer.html ===
 
 # === partials/comment.html ===
-[valineLang]
-other = "en"
-
-[valinePlaceholder]
-other = "Ваш комментарий ..."
-
 [facebookLanguageCode]
 other = "ru_RU"
 
@@ -88,21 +82,7 @@ other = "lib/lunr/lunr.ru.js"
 
 [copyToClipboard]
 other = "Копировать в буфер обмена"
-
-[cookieconsentMessage]
-other = "Этот сайт использует Cookies для улучшения вашего опыта."
-
-[cookieconsentDismiss]
-other = "Согласен"
-
-[cookieconsentLink]
-other = "Учить больше"
 # === partials/assets.html ===
-
-# === partials/plugin/share.html ===
-[shareOn]
-other = "Поделиться в"
-# === partials/plugin/share.html ===
 
 # === posts/single.html ===
 [contents]

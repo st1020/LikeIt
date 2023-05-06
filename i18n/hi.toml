@@ -51,12 +51,6 @@ other = "संचालित द्वारा {{ .Hugo }} | थीम - {{ .
 # === partials/footer.html ===
 
 # === partials/comment.html ===
-[valineLang]
-other = "en"
-
-[valinePlaceholder]
-other = "आपकी टिप्पणी ..."
-
 [facebookLanguageCode]
 other = "hi_IN"
 
@@ -85,21 +79,7 @@ other = "hi"
 
 [copyToClipboard]
 other = "क्लिपबोर्ड पर कॉपी करें"
-
-[cookieconsentMessage]
-other = "यह वेबसाइट आपके अनुभव को बेहतर बनाने के लिए कुकीज़ का उपयोग करती है।"
-
-[cookieconsentDismiss]
-other = "समझ गया!"
-
-[cookieconsentLink]
-other = "और अधिक जानें"
 # === partials/assets.html ===
-
-# === partials/plugin/share.html ===
-[shareOn]
-other = "पर साझा करें"
-# === partials/plugin/share.html ===
 
 # === posts/single.html ===
 [contents]

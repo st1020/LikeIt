@@ -51,12 +51,6 @@ other = "由 {{ .Hugo }} 強力驅動 | 主題 - {{ .Theme }}"
 # === partials/footer.html ===
 
 # === partials/comment.html ===
-[valineLang]
-other = "zh-TW"
-
-[valinePlaceholder]
-other = "你的評論 ..."
-
 [facebookLanguageCode]
 other = "zh_TW"
 # === partials/comment.html ===
@@ -88,21 +82,7 @@ other = "lib/lunr/lunr.segmentit.js"
 
 [copyToClipboard]
 other = "複製到剪貼板"
-
-[cookieconsentMessage]
-other = "本網站使用 Cookies 來改善您的瀏覽體驗."
-
-[cookieconsentDismiss]
-other = "同意"
-
-[cookieconsentLink]
-other = "了解更多"
 # === partials/assets.html ===
-
-# === partials/plugin/share.html ===
-[shareOn]
-other = "分享到"
-# === partials/plugin/share.html ===
 
 # === posts/single.html ===
 [contents]

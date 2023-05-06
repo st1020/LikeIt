@@ -51,12 +51,6 @@ other = "เว็บนี้สร้างโดย {{ .Hugo }} | ธีม -
 # === partials/footer.html ===
 
 # === partials/comment.html ===
-[valineLang]
-other = "en"
-
-[valinePlaceholder]
-other = "ความคิดเห็นของคุณ ..."
-
 [facebookLanguageCode]
 other = "th_TH"
 
@@ -88,21 +82,7 @@ other = "lib/lunr/lunr.th.js"
 
 [copyToClipboard]
 other = "คัดลอกไปยังคลิปบอร์ด"
-
-[cookieconsentMessage]
-other = "เว็บไซต์นี้มีการใช้คุกกี้เพื่อปรับปรุงประสิทธิภาพการแสดงผล."
-
-[cookieconsentDismiss]
-other = "เข้าใจแล้ว!"
-
-[cookieconsentLink]
-other = "เรียนรู้เพิ่มเติม"
 # === partials/assets.html ===
-
-# === partials/plugin/share.html ===
-[shareOn]
-other = "แชร์ไปยัง"
-# === partials/plugin/share.html ===
 
 # === posts/single.html ===
 [contents]

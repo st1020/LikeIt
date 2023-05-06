@@ -1,6 +1,6 @@
 {{- if .Title -}}
     <figure>
-        {{- dict "Src" .Destination "Title" .Text "Caption" .Title "Linked" true "Resources" .Page.Resources | partial "plugin/img.html" -}}
+        {{- dict "Src" .Destination "Title" .Text "Caption" .Title "Resources" .Page.Resources | partial "plugin/img.html" -}}
         <figcaption class="image-caption">
             {{- .Title | safeHTML -}}
         </figcaption>

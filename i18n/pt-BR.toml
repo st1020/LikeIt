@@ -51,12 +51,6 @@ other = "Possibilitado por {{ .Hugo }} | Tema - {{ .Theme }}"
 # === partials/footer.html ===
 
 # === partials/comment.html ===
-[valineLang]
-other = "en"
-
-[valinePlaceholder]
-other = "O seu comentário ..."
-
 [facebookLanguageCode]
 other = "pt_BR"
 
@@ -88,21 +82,7 @@ other = "lib/lunr/lunr.pt.js"
 
 [copyToClipboard]
 other = "Copiar para a área de transferência"
-
-[cookieconsentMessage]
-other = "Este site usa Cookies para melhorar sua experiência."
-
-[cookieconsentDismiss]
-other = "Aceita"
-
-[cookieconsentLink]
-other = "Saber mais"
 # === partials/assets.html ===
-
-# === partials/plugin/share.html ===
-[shareOn]
-other = "Compartilhe em"
-# === partials/plugin/share.html ===
 
 # === posts/single.html ===
 [contents]

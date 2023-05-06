@@ -51,12 +51,6 @@ other = "{{ .Hugo }}로 제작된 사이트 | 테마 - {{ .Theme }}"
 # === partials/footer.html ===
 
 # === partials/comment.html ===
-[valineLang]
-other = "en"
-
-[valinePlaceholder]
-other = "댓글 입력..."
-
 [facebookLanguageCode]
 other = "ko-KR"
 
@@ -85,21 +79,7 @@ other = "en"
 
 [copyToClipboard]
 other = "복사하기"
-
-[cookieconsentMessage]
-other = "본 웹사이트는 웹 환경 개선을 위해 쿠키를 사용합니다."
-
-[cookieconsentDismiss]
-other = "알겠습니다"
-
-[cookieconsentLink]
-other = "더 보기"
 # === partials/assets.html ===
-
-# === partials/plugin/share.html ===
-[shareOn]
-other = "공유하기"
-# === partials/plugin/share.html ===
 
 # === posts/single.html ===
 [contents]

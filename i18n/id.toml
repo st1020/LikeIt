@@ -51,12 +51,6 @@ other = "Dipersembahkan oleh {{ .Hugo }} | Tema - {{ .Theme }}"
 # === partials/footer.html ===
 
 # === partials/comment.html ===
-[valineLang]
-other = "en"
-
-[valinePlaceholder]
-other = "Komentar Anda ..."
-
 [facebookLanguageCode]
 other = "id_ID"
 
@@ -85,21 +79,7 @@ other = "en"
 
 [copyToClipboard]
 other = "Salin ke papan klip"
-
-[cookieconsentMessage]
-other = "Situs ini menggunakan Cookies untuk meningkatkan pengalaman Anda."
-
-[cookieconsentDismiss]
-other = "Mengerti!"
-
-[cookieconsentLink]
-other = "Pelajari lebih lanjut"
 # === partials/assets.html ===
-
-# === partials/plugin/share.html ===
-[shareOn]
-other = "Bagikan ke"
-# === partials/plugin/share.html ===
 
 # === posts/single.html ===
 [contents]

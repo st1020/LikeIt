@@ -51,12 +51,6 @@ other = "Покреће {{ .Hugo }} | Тема - {{ .Theme }}"
 # === partials/footer.html ===
 
 # === partials/comment.html ===
-[valineLang]
-other = "en"
-
-[valinePlaceholder]
-other = "Ваш коментар ..."
-
 [facebookLanguageCode]
 other = "sr_RS"
 
@@ -85,21 +79,7 @@ other = "sr"
 
 [copyToClipboard]
 other = "Копирај на радну таблу"
-
-[cookieconsentMessage]
-other = "Ова веб локација користи Cookies да би побољшала ваше искуство."
-
-[cookieconsentDismiss]
-other = "Договорити се"
-
-[cookieconsentLink]
-other = "Сазнајте више"
 # === partials/assets.html ===
-
-# === partials/plugin/share.html ===
-[shareOn]
-other = "Подели на"
-# === partials/plugin/share.html ===
 
 # === posts/single.html ===
 [contents]

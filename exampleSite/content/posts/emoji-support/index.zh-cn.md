@@ -6,7 +6,7 @@ lastmod: 2019-10-01T17:55:28+08:00
 draft: false
 author: "Dillon"
 authorLink: "https://dillonzq.com"
-description: "Hugo 和 LoveIt 中的 Emoji 的用法指南."
+description: "Hugo 和 LikeIt 中的 Emoji 的用法指南."
 images: []
 resources:
 - name: "featured-image"
@@ -16,7 +16,6 @@ tags: ["emoji"]
 categories: ["Markdown"]
 
 twemoji: false
-lightgallery: true
 ---
 
 Emoji 可以通过多种方式在 Hugo 项目中启用.

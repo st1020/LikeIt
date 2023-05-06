@@ -93,9 +93,3 @@
   -ms-line-break: $value;
   line-break: $value;
 }
-
-@mixin object-fit($value) {
-  -o-object-fit: $value;
-  object-fit: $value;
-  font-family: "object-fit: #{$value};";
-}

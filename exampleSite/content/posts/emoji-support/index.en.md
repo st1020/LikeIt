@@ -6,7 +6,7 @@ lastmod: 2019-10-01T17:55:28+08:00
 draft: false
 author: "Dillon"
 authorLink: "https://dillonzq.com"
-description: "Guide to emoji usage in Hugo and LoveIt."
+description: "Guide to emoji usage in Hugo and LikeIt."
 images: []
 resources:
 - name: "featured-image"
@@ -16,7 +16,6 @@ tags: ["emoji"]
 categories: ["Markdown"]
 
 twemoji: false
-lightgallery: true
 ---
 
 Emoji can be enabled in a Hugo project in a number of ways.

@@ -16,47 +16,6 @@
             </noscript>
         {{- end -}}
 
-        {{- /* Gitalk Comment System */ -}}
-        {{- $gitalk := $comment.gitalk | default dict -}}
-        {{- if $gitalk.enable -}}
-            <div id="gitalk" class="comment"></div>
-            {{- $source := $cdn.gitalkCSS | default "lib/gitalk/gitalk.css" -}}
-            {{- dict "Source" $source "Minify" true "Fingerprint" $fingerprint | dict "Scratch" .Scratch "Data" | partial "scratch/style.html" -}}
-            {{- $source := $cdn.gitalkJS | default "lib/gitalk/gitalk.min.js" -}}
-            {{- dict "Source" $source "Fingerprint" $fingerprint | dict "Scratch" .Scratch "Data" | partial "scratch/script.html" -}}
-            {{- $commentConfig = dict "id" .Date "title" .Title "clientID" $gitalk.clientId "clientSecret" $gitalk.clientSecret "repo" $gitalk.repo "owner" $gitalk.owner "admin" (slice $gitalk.owner) | dict "gitalk" | merge $commentConfig -}}
-            <noscript>
-                Please enable JavaScript to view the comments powered by <a href="https://github.com/gitalk/gitalk"></a>Gitalk</a>.
-            </noscript>
-        {{- end -}}
-
-        {{- /* Valine Comment System */ -}}
-        {{- $valine := $comment.valine | default dict -}}
-        {{- if $valine.enable -}}
-            <div id="valine" class="comment"></div>
-            {{- $options := dict "targetPath" "lib/valine/valine.min.css" -}}
-            {{- dict "Source" "lib/valine/valine.scss" "ToCSS" $options | dict "Scratch" .Scratch "Data" | partial "scratch/style.html" -}}
-            {{- $source := $cdn.valineJS | default "lib/valine/Valine.min.js" -}}
-            {{- dict "Source" $source "Fingerprint" $fingerprint | dict "Scratch" .Scratch "Data" | partial "scratch/script.html" -}}
-            {{- $commentConfig = dict "el" "#valine" "appId" $valine.appId "appKey" $valine.appKey "lang" ($valine.lang | default (T "valineLang")) "visitor" $valine.visitor "recordIP" $valine.recordIP "placeholder" ($valine.placeholder | default (T "valinePlaceholder")) "highlight" (ne $valine.highlight false) "enableQQ" $valine.enableQQ | dict "valine" | merge $commentConfig -}}
-            {{- with $valine.avatar -}}
-                {{- $commentConfig = dict "avatar" . | dict "valine" | merge $commentConfig -}}
-            {{- end -}}
-            {{- with $valine.meta -}}
-                {{- $commentConfig = dict "meta" . | dict "valine" | merge $commentConfig -}}
-            {{- end -}}
-            {{- with $valine.pageSize -}}
-                {{- $commentConfig = dict "pageSize" . | dict "valine" | merge $commentConfig -}}
-            {{- end -}}
-            {{- with $valine.serverURLs -}}
-                {{- $commentConfig = dict "serverURLs" . | dict "valine" | merge $commentConfig -}}
-            {{- end -}}
-            {{- $commentConfig = $valine.emoji | default "google.yml" | printf "lib/valine/emoji/%v" | resources.Get | transform.Unmarshal | dict "valine" | merge $commentConfig -}}
-            <noscript>
-                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
-            </noscript>
-        {{- end -}}
-
         {{- /* Facebook Comment System */ -}}
         {{- $facebook := $comment.facebook | default dict -}}
         {{- if $facebook.enable -}}
@@ -134,7 +93,7 @@
             {{- $commentConfig = dict "repoId" $giscus.repoId | dict "giscus" | merge $commentConfig -}}
             {{- $commentConfig = dict "category" $giscus.category | dict "giscus" | merge $commentConfig -}}
             {{- $commentConfig = dict "categoryId" $giscus.categoryId | dict "giscus" | merge $commentConfig -}}
-            {{- $commentConfig = $giscus.lang | default (T "valineLang") | dict "lang" | dict "giscus" | merge $commentConfig -}}
+            {{- $commentConfig = $giscus.lang | default "en" | dict "lang" | dict "giscus" | merge $commentConfig -}}
             {{- $commentConfig = $giscus.mapping | default "pathname" | dict "mapping" | dict "giscus" | merge $commentConfig -}}
             {{- $commentConfig = $giscus.reactionsEnabled | default "1" | dict "reactionsEnabled" | dict "giscus" | merge $commentConfig -}}
             {{- $commentConfig = $giscus.emitMetadata | default "0" | dict "emitMetadata" | dict "giscus" | merge $commentConfig -}}

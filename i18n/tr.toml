@@ -51,12 +51,6 @@ other = "{{ .Hugo }} ile yapıldı | Tema - {{ .Theme }}"
 # === partials/footer.html ===
 
 # === partials/comment.html ===
-[valineLang]
-other = "en"
-
-[valinePlaceholder]
-other = "Yorumun..."
-
 [facebookLanguageCode]
 other = "tr_TR"
 
@@ -85,21 +79,7 @@ other = "tr"
 
 [copyToClipboard]
 other = "Panoya kopyala"
-
-[cookieconsentMessage]
-other = "Bu websitesi deneyiminizi iyileştirmek için çerezleri kullanmaktadır."
-
-[cookieconsentDismiss]
-other = "Anladım!"
-
-[cookieconsentLink]
-other = "Daha fazla öğren"
 # === partials/assets.html ===
-
-# === partials/plugin/share.html ===
-[shareOn]
-other = "Şurada Paylaş"
-# === partials/plugin/share.html ===
 
 # === posts/single.html ===
 [contents]

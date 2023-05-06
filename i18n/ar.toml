@@ -51,12 +51,6 @@ other = "يعمل الموقع بنظام {{ .Hugo }} | التصميم مقدم 
 # === partials/footer.html ===
 
 # === partials/comment.html ===
-[valineLang]
-other = "en"
-
-[valinePlaceholder]
-other = "تعليقك..."
-
 [facebookLanguageCode]
 other = "ar_AR"
 
@@ -85,21 +79,7 @@ other = "ar"
 
 [copyToClipboard]
 other = "نسخ"
-
-[cookieconsentMessage]
-other = "هذا الموقع يستخدم الكوكيز لتجربة تصفح افضل."
-
-[cookieconsentDismiss]
-other = "حسنًا"
-
-[cookieconsentLink]
-other = "معرفة المزيد"
 # === partials/assets.html ===
-
-# === partials/plugin/share.html ===
-[shareOn]
-other = "مشاركة الرابط"
-# === partials/plugin/share.html ===
 
 # === posts/single.html ===
 [contents]

@@ -51,12 +51,6 @@ other = "Impulsat per {{ .Hugo }} | Tema - {{ .Theme }}"
 # === partials/footer.html ===
 
 # === partials/comment.html ===
-[valineLang]
-other = "en"
-
-[valinePlaceholder]
-other = "El teu comentari ..."
-
 [facebookLanguageCode]
 other = "ca_ES"
 
@@ -85,21 +79,7 @@ other = "ca"
 
 [copyToClipboard]
 other = "Copiar al portapapers"
-
-[cookieconsentMessage]
-other = "Aquest lloc web utilitza cookies per millorar la teva experiència."
-
-[cookieconsentDismiss]
-other = "Entenc!"
-
-[cookieconsentLink]
-other = "Més informació"
 # === partials/assets.html ===
-
-# === partials/plugin/share.html ===
-[shareOn]
-other = "Comparteix a"
-# === partials/plugin/share.html ===
 
 # === posts/single.html ===
 [contents]

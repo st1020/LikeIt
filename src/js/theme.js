@@ -67,10 +67,6 @@ class Theme {
         });
     }
 
-    initTwemoji() {
-        if (this.config.twemoji) twemoji.parse(document.body);
-    }
-
     initMenuMobile() {
         const $menuToggleMobile = document.getElementById('menu-toggle-mobile');
         const $menuMobile = document.getElementById('menu-mobile');
@@ -181,110 +177,70 @@ class Theme {
                         $searchClear.style.display = 'inline';
                         callback(results);
                     };
-                    if (searchConfig.type === 'lunr') {
-                        const search = () => {
-                            if (lunr.queryHandler) query = lunr.queryHandler(query);
-                            const results = {};
-                            this._index.search(query).forEach(({ ref, matchData: { metadata } }) => {
-                                const matchData = this._indexData[ref];
-                                let { uri, title, content: context } = matchData;
-                                if (results[uri]) return;
-                                let position = 0;
-                                Object.values(metadata).forEach(({ content }) => {
-                                    if (content) {
-                                        const matchPosition = content.position[0][0];
-                                        if (matchPosition < position || position === 0) position = matchPosition;
-                                    }
-                                });
-                                position -= snippetLength / 5;
-                                if (position > 0) {
-                                    position += context.substr(position, 20).lastIndexOf(' ') + 1;
-                                    context = '...' + context.substr(position, snippetLength);
-                                } else {
-                                    context = context.substr(0, snippetLength);
+                    const search = () => {
+                        if (lunr.queryHandler) query = lunr.queryHandler(query);
+                        const results = {};
+                        this._index.search(query).forEach(({ ref, matchData: { metadata } }) => {
+                            const matchData = this._indexData[ref];
+                            let { uri, title, content: context } = matchData;
+                            if (results[uri]) return;
+                            let position = 0;
+                            Object.values(metadata).forEach(({ content }) => {
+                                if (content) {
+                                    const matchPosition = content.position[0][0];
+                                    if (matchPosition < position || position === 0) position = matchPosition;
                                 }
-                                Object.keys(metadata).forEach(key => {
-                                    title = title.replace(new RegExp(`(${key})`, 'gi'), `<${highlightTag}>$1</${highlightTag}>`);
-                                    context = context.replace(new RegExp(`(${key})`, 'gi'), `<${highlightTag}>$1</${highlightTag}>`);
-                                });
-                                results[uri] = {
-                                    'uri': uri,
-                                    'title' : title,
-                                    'date' : matchData.date,
-                                    'context' : context,
-                                };
                             });
-                            return Object.values(results).slice(0, maxResultLength);
-                        }
-                        if (!this._index) {
-                            fetch(searchConfig.lunrIndexURL)
-                                .then(response => response.json())
-                                .then(data => {
-                                    const indexData = {};
-                                    this._index = lunr(function () {
-                                        if (searchConfig.lunrLanguageCode) this.use(lunr[searchConfig.lunrLanguageCode]);
-                                        this.ref('objectID');
-                                        this.field('title', { boost: 50 });
-                                        this.field('tags', { boost: 20 });
-                                        this.field('categories', { boost: 20 });
-                                        this.field('content', { boost: 10 });
-                                        this.metadataWhitelist = ['position'];
-                                        data.forEach((record) => {
-                                            indexData[record.objectID] = record;
-                                            this.add(record);
-                                        });
+                            position -= snippetLength / 5;
+                            if (position > 0) {
+                                position += context.substr(position, 20).lastIndexOf(' ') + 1;
+                                context = '...' + context.substr(position, snippetLength);
+                            } else {
+                                context = context.substr(0, snippetLength);
+                            }
+                            Object.keys(metadata).forEach(key => {
+                                title = title.replace(new RegExp(`(${key})`, 'gi'), `<${highlightTag}>$1</${highlightTag}>`);
+                                context = context.replace(new RegExp(`(${key})`, 'gi'), `<${highlightTag}>$1</${highlightTag}>`);
+                            });
+                            results[uri] = {
+                                'uri': uri,
+                                'title' : title,
+                                'date' : matchData.date,
+                                'context' : context,
+                            };
+                        });
+                        return Object.values(results).slice(0, maxResultLength);
+                    }
+                    if (!this._index) {
+                        fetch(searchConfig.lunrIndexURL)
+                            .then(response => response.json())
+                            .then(data => {
+                                const indexData = {};
+                                this._index = lunr(function () {
+                                    if (searchConfig.lunrLanguageCode) this.use(lunr[searchConfig.lunrLanguageCode]);
+                                    this.ref('objectID');
+                                    this.field('title', { boost: 50 });
+                                    this.field('tags', { boost: 20 });
+                                    this.field('categories', { boost: 20 });
+                                    this.field('content', { boost: 10 });
+                                    this.metadataWhitelist = ['position'];
+                                    data.forEach((record) => {
+                                        indexData[record.objectID] = record;
+                                        this.add(record);
                                     });
-                                    this._indexData = indexData;
-                                    finish(search());
-                                }).catch(err => {
-                                    console.error(err);
-                                    finish([]);
                                 });
-                        } else finish(search());
-                    } else if (searchConfig.type === 'algolia') {
-                        this._algoliaIndex = this._algoliaIndex || algoliasearch(searchConfig.algoliaAppID, searchConfig.algoliaSearchKey).initIndex(searchConfig.algoliaIndex);
-                        this._algoliaIndex
-                            .search(query, {
-                                offset: 0,
-                                length: maxResultLength * 8,
-                                attributesToHighlight: ['title'],
-                                attributesToSnippet: [`content:${snippetLength}`],
-                                highlightPreTag: `<${highlightTag}>`,
-                                highlightPostTag: `</${highlightTag}>`,
-                            })
-                            .then(({ hits }) => {
-                                const results = {};
-                                hits.forEach(({ uri, date, _highlightResult: { title }, _snippetResult: { content } }) => {
-                                    if (results[uri] && results[uri].context.length > content.value) return;
-                                    results[uri] = {
-                                        uri: uri,
-                                        title: title.value,
-                                        date: date,
-                                        context: content.value,
-                                    };
-                                });
-                                finish(Object.values(results).slice(0, maxResultLength));
-                            })
-                            .catch(err => {
+                                this._indexData = indexData;
+                                finish(search());
+                            }).catch(err => {
                                 console.error(err);
                                 finish([]);
                             });
-                    }
+                    } else finish(search());
                 },
                 templates: {
                     suggestion: ({ title, date, context }) => `<div><span class="suggestion-title">${title}</span><span class="suggestion-date">${date}</span></div><div class="suggestion-context">${context}</div>`,
                     empty: ({ query }) => `<div class="search-empty">${searchConfig.noResultsFound}: <span class="search-query">"${query}"</span></div>`,
-                    footer: ({}) => {
-                        const { searchType, icon, href } = searchConfig.type === 'algolia' ? {
-                            searchType: 'algolia',
-                            icon: '<i class="fab fa-algolia fa-fw" aria-hidden="true"></i>',
-                            href: 'https://www.algolia.com/',
-                        } : {
-                            searchType: 'Lunr.js',
-                            icon: '',
-                            href: 'https://lunrjs.com/',
-                        };
-                        return `<div class="search-footer">Search by <a href="${href}" rel="noopener noreffer" target="_blank">${icon} ${searchType}</a></div>`;},
+                    footer: ({}) => `<div class="search-footer">Search by <a href="https://lunrjs.com/" rel="noopener noreffer" target="_blank">Lunr.js</a></div>`,
                 },
             });
             autosearch.on('autocomplete:selected', (_event, suggestion, _dataset, _context) => {
@@ -321,22 +277,6 @@ class Theme {
             $summary.addEventListener('click', () => {
                 $details.classList.toggle('open');
             }, false);
-        });
-    }
-
-    initLightGallery() {
-        if (this.config.lightgallery) lightGallery(document.getElementById('content'), {
-            plugins: [lgThumbnail, lgZoom],
-            selector: '.lightgallery',
-            speed: 400,
-            hideBarsDelay: 2000,
-            allowMediaOverlap: true,
-            exThumbImage: 'data-thumbnail',
-            toggleThumb: true,
-            thumbWidth: 80,
-            thumbHeight: '60px',
-            actualSize: false,
-            showZoomInOutIcons: true,
         });
     }
 
@@ -488,141 +428,8 @@ class Theme {
         if (this.config.math) renderMathInElement(document.body, this.config.math);
     }
 
-    initMermaid() {
-        this._mermaidOnSwitchTheme = this._mermaidOnSwitchTheme || (() => {
-            const $mermaidElements = document.getElementsByClassName('mermaid');
-            if ($mermaidElements.length) {
-                mermaid.initialize({startOnLoad: false, theme: this.isDark ? 'dark' : 'neutral', securityLevel: 'loose'});
-                this.util.forEach($mermaidElements, $mermaid => {
-                    mermaid.render('svg-' + $mermaid.id, this.data[$mermaid.id], svgCode => {
-                        $mermaid.innerHTML = svgCode;
-                    }, $mermaid);
-                });
-            }
-        });
-        this.switchThemeEventSet.add(this._mermaidOnSwitchTheme);
-        this._mermaidOnSwitchTheme();
-    }
-
-    initEcharts() {
-        if (this.config.echarts) {
-            echarts.registerTheme('light', this.config.echarts.lightTheme);
-            echarts.registerTheme('dark', this.config.echarts.darkTheme);
-            this._echartsOnSwitchTheme = this._echartsOnSwitchTheme || (() => {
-                this._echartsArr = this._echartsArr || [];
-                for (let i = 0; i < this._echartsArr.length; i++) {
-                    this._echartsArr[i].dispose();
-                }
-                this._echartsArr = [];
-                this.util.forEach(document.getElementsByClassName('echarts'), $echarts => {
-                    const chart = echarts.init($echarts, this.isDark ? 'dark' : 'light', {renderer: 'svg'});
-                    chart.setOption(JSON.parse(this.data[$echarts.id]));
-                    this._echartsArr.push(chart);
-                });
-            });
-            this.switchThemeEventSet.add(this._echartsOnSwitchTheme);
-            this._echartsOnSwitchTheme();
-            this._echartsOnResize = this._echartsOnResize || (() => {
-                for (let i = 0; i < this._echartsArr.length; i++) {
-                    this._echartsArr[i].resize();
-                }
-            });
-            this.resizeEventSet.add(this._echartsOnResize);
-        }
-    }
-
-    initMapbox() {
-        if (this.config.mapbox) {
-            mapboxgl.accessToken = this.config.mapbox.accessToken;
-            mapboxgl.setRTLTextPlugin(this.config.mapbox.RTLTextPlugin);
-            this._mapboxArr = this._mapboxArr || [];
-            this.util.forEach(document.getElementsByClassName('mapbox'), $mapbox => {
-                const { lng, lat, zoom, lightStyle, darkStyle, marked, navigation, geolocate, scale, fullscreen } = this.data[$mapbox.id];
-                const mapbox = new mapboxgl.Map({
-                    container: $mapbox,
-                    center: [lng, lat],
-                    zoom: zoom,
-                    minZoom: .2,
-                    style: this.isDark ? darkStyle : lightStyle,
-                    attributionControl: false,
-                });
-                if (marked) {
-                    new mapboxgl.Marker().setLngLat([lng, lat]).addTo(mapbox);
-                }
-                if (navigation) {
-                    mapbox.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
-                }
-                if (geolocate) {
-                    mapbox.addControl(new mapboxgl.GeolocateControl({
-                        positionOptions: {
-                            enableHighAccuracy: true,
-                        },
-                        showUserLocation: true,
-                        trackUserLocation: true,
-                    }), 'bottom-right');
-                }
-                if (scale) {
-                    mapbox.addControl(new mapboxgl.ScaleControl());
-                }
-                if (fullscreen) {
-                    mapbox.addControl(new mapboxgl.FullscreenControl());
-                }
-                mapbox.addControl(new MapboxLanguage());
-                this._mapboxArr.push(mapbox);
-            });
-            this._mapboxOnSwitchTheme = this._mapboxOnSwitchTheme || (() => {
-                this.util.forEach(this._mapboxArr, mapbox => {
-                    const $mapbox = mapbox.getContainer();
-                    const { lightStyle, darkStyle } = this.data[$mapbox.id];
-                    mapbox.setStyle(this.isDark ? darkStyle : lightStyle);
-                    mapbox.addControl(new MapboxLanguage());
-                });
-            });
-            this.switchThemeEventSet.add(this._mapboxOnSwitchTheme);
-        }
-    }
-
-    initTypeit() {
-        if (this.config.typeit) {
-            const typeitConfig = this.config.typeit;
-            const speed = typeitConfig.speed ? typeitConfig.speed : 100;
-            const cursorSpeed = typeitConfig.cursorSpeed ? typeitConfig.cursorSpeed : 1000;
-            const cursorChar = typeitConfig.cursorChar ? typeitConfig.cursorChar : '|';
-            Object.values(typeitConfig.data).forEach(group => {
-                const typeone = (i) => {
-                    const id = group[i];
-                    const instance = new TypeIt(`#${id}`, {
-                        strings: this.data[id],
-                        speed: speed,
-                        lifeLike: true,
-                        cursorSpeed: cursorSpeed,
-                        cursorChar: cursorChar,
-                        waitUntilVisible: true,
-                        afterComplete: () => {
-                            if (i === group.length - 1) {
-                                if (typeitConfig.duration >= 0) window.setTimeout(() => {
-                                    instance.destroy();
-                                }, typeitConfig.duration);
-                                return;
-                            }
-                            instance.destroy();
-                            typeone(i + 1);
-                        },
-                    }).go();
-                };
-                typeone(0);
-            });
-        }
-    }
-
     initComment() {
         if (this.config.comment) {
-            if (this.config.comment.gitalk) {
-                this.config.comment.gitalk.body = decodeURI(window.location.href);
-                const gitalk = new Gitalk(this.config.comment.gitalk);
-                gitalk.render('gitalk');
-            }
-            if (this.config.comment.valine) new Valine(this.config.comment.valine);
             if (this.config.comment.utterances) {
                 const utterancesConfig = this.config.comment.utterances;
                 const script = document.createElement('script');
@@ -681,10 +488,6 @@ class Theme {
         }
     }
 
-    initCookieconsent() {
-        if (this.config.cookieconsent) cookieconsent.initialise(this.config.cookieconsent);
-    }
-
     onScroll() {
         const $headers = [];
         if (document.body.getAttribute('data-header-desktop') === 'auto') $headers.push(document.getElementById('header-desktop'));
@@ -737,7 +540,6 @@ class Theme {
                     this._resizeTimeout = null;
                     for (let event of this.resizeEventSet) event();
                     this.initToc();
-                    this.initMermaid();
                     this.initSearch();
                 }, 100);
             }
@@ -755,21 +557,14 @@ class Theme {
         try {
             this.initRaw();
             this.initSVGIcon();
-            this.initTwemoji();
             this.initMenuMobile();
             this.initSwitchTheme();
             this.initSearch();
             this.initDetails();
-            this.initLightGallery();
             this.initHighlight();
             this.initTable();
             this.initHeaderLink();
             this.initMath();
-            this.initMermaid();
-            this.initEcharts();
-            this.initTypeit();
-            this.initMapbox();
-            this.initCookieconsent();
         } catch (err) {
             console.error(err);
         }

@@ -51,12 +51,6 @@ other = "Realizat de către {{ .Hugo }} | Temă - {{ .Theme }}"
 # === partials/footer.html ===
 
 # === partials/comment.html ===
-[valineLang]
-other = "en"
-
-[valinePlaceholder]
-other = "Comentariul dvs ..."
-
 [facebookLanguageCode]
 other = "ro_RO"
 
@@ -88,21 +82,7 @@ other = "lib/lunr/lunr.ro.js"
 
 [copyToClipboard]
 other = "Copiați în clipboard"
-
-[cookieconsentMessage]
-other = "Acest site web utilizează Cookies pentru a vă îmbunătăți experiența."
-
-[cookieconsentDismiss]
-other = "De acord"
-
-[cookieconsentLink]
-other = "Aflați mai multe"
 # === partials/assets.html ===
-
-# === partials/plugin/share.html ===
-[shareOn]
-other = "Distribuie pe"
-# === partials/plugin/share.html ===
 
 # === posts/single.html ===
 [contents]

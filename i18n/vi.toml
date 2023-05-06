@@ -51,12 +51,6 @@ other = "Cung cấp bởi {{ .Hugo }} | Chủ đề - {{ .Theme }}"
 # === partials/footer.html ===
 
 # === partials/comment.html ===
-[valineLang]
-other = "en"
-
-[valinePlaceholder]
-other = "Bình luận của bạn ..."
-
 [facebookLanguageCode]
 other = "vi"
 
@@ -88,21 +82,7 @@ other = "lib/lunr/lunr.vi.js"
 
 [copyToClipboard]
 other = "Sao chép vào bộ nhớ tạm"
-
-[cookieconsentMessage]
-other = "Trang web này sử dụng Cookies để cải thiện trải nghiệm của bạn."
-
-[cookieconsentDismiss]
-other = "Đã hiểu!"
-
-[cookieconsentLink]
-other = "Tìm hiểu thêm"
 # === partials/assets.html ===
-
-# === partials/plugin/share.html ===
-[shareOn]
-other = "Chia sẻ trên"
-# === partials/plugin/share.html ===
 
 # === posts/single.html ===
 [contents]
