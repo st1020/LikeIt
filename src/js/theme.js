@@ -110,7 +110,6 @@ class Theme {
     if (!searchConfig || (isMobile && this._searchMobileOnce) || (!isMobile && this._searchDesktopOnce)) return;
 
     const maxResultLength = searchConfig.maxResultLength ? searchConfig.maxResultLength : 10;
-    const snippetLength = searchConfig.snippetLength ? searchConfig.snippetLength : 50;
     const highlightTag = searchConfig.highlightTag ? searchConfig.highlightTag : "em";
 
     const suffix = isMobile ? "mobile" : "desktop";
@@ -197,125 +196,97 @@ class Theme {
       false
     );
 
-    const initAutosearch = () => {
-      const autosearch = autocomplete(
-        `#search-input-${suffix}`,
-        {
-          hint: false,
-          autoselect: true,
-          dropdownMenuContainer: `#search-dropdown-${suffix}`,
-          clearOnSelected: true,
-          cssClasses: { noPrefix: true },
-          debug: true,
-        },
-        {
-          name: "search",
-          source: (query, callback) => {
-            $searchLoading.style.display = "inline";
-            $searchClear.style.display = "none";
-            const finish = (results) => {
-              $searchLoading.style.display = "none";
-              $searchClear.style.display = "inline";
-              callback(results);
-            };
-            const search = () => {
-              if (lunr.queryHandler) query = lunr.queryHandler(query);
-              const results = {};
-              this._index.search(query).forEach(({ ref, matchData: { metadata } }) => {
-                const matchData = this._indexData[ref];
-                let { uri, title, content: context } = matchData;
-                if (results[uri]) return;
-                let position = 0;
-                Object.values(metadata).forEach(({ content }) => {
-                  if (content) {
-                    const matchPosition = content.position[0][0];
-                    if (matchPosition < position || position === 0) position = matchPosition;
-                  }
-                });
-                position -= snippetLength / 5;
-                if (position > 0) {
-                  position += context.substr(position, 20).lastIndexOf(" ") + 1;
-                  context = "..." + context.substr(position, snippetLength);
-                } else {
-                  context = context.substr(0, snippetLength);
-                }
-                Object.keys(metadata).forEach((key) => {
-                  title = title.replace(new RegExp(`(${key})`, "gi"), `<${highlightTag}>$1</${highlightTag}>`);
-                  context = context.replace(new RegExp(`(${key})`, "gi"), `<${highlightTag}>$1</${highlightTag}>`);
-                });
-                results[uri] = {
-                  uri: uri,
-                  title: title,
-                  date: matchData.date,
-                  context: context,
-                };
-              });
-              return Object.values(results).slice(0, maxResultLength);
-            };
-            if (!this._index) {
-              fetch(searchConfig.lunrIndexURL)
-                .then((response) => response.json())
-                .then((data) => {
-                  const indexData = {};
-                  this._index = lunr(function () {
-                    if (searchConfig.lunrLanguageCode) this.use(lunr[searchConfig.lunrLanguageCode]);
-                    this.ref("objectID");
-                    this.field("title", { boost: 50 });
-                    this.field("tags", { boost: 20 });
-                    this.field("categories", { boost: 20 });
-                    this.field("content", { boost: 10 });
-                    this.metadataWhitelist = ["position"];
-                    data.forEach((record) => {
-                      indexData[record.objectID] = record;
-                      this.add(record);
-                    });
+    const autosearch = autocomplete(
+      `#search-input-${suffix}`,
+      {
+        hint: false,
+        autoselect: true,
+        dropdownMenuContainer: `#search-dropdown-${suffix}`,
+        clearOnSelected: true,
+        cssClasses: { noPrefix: true },
+        debug: true,
+      },
+      {
+        name: "search",
+        source: (query, callback) => {
+          $searchLoading.style.display = "inline";
+          $searchClear.style.display = "none";
+          const finish = (results) => {
+            $searchLoading.style.display = "none";
+            $searchClear.style.display = "inline";
+            callback(results);
+          };
+          const search = () => {
+            const results = {};
+            this._index.search(query).forEach(({ item, matches }) => {
+              matches.forEach(({ key, value, indices }) => {
+                if (key == "title" || key == "content") {
+                  let text = "";
+                  let offset = 0;
+                  indices.forEach((region) => {
+                    const temp = region[1] + 1;
+                    text +=
+                      value.substring(offset, region[0]) +
+                      `<${highlightTag}>` +
+                      value.substring(region[0], temp) +
+                      `</${highlightTag}>`;
+                    offset = temp;
                   });
-                  this._indexData = indexData;
-                  finish(search());
-                })
-                .catch((err) => {
-                  console.error(err);
-                  finish([]);
+                  text += value.substring(offset);
+                  item[key] = text;
+                }
+              });
+              results[item["uri"]] = {
+                uri: item["uri"],
+                title: item["title"],
+                date: item["date"],
+                context: item["content"],
+              };
+            });
+            return Object.values(results).slice(0, maxResultLength);
+          };
+          if (!this._index) {
+            fetch(searchConfig.indexURL)
+              .then((response) => response.json())
+              .then((data) => {
+                console.log(searchConfig);
+                this._index = new Fuse(data, {
+                  isCaseSensitive: false,
+                  includeMatches: true,
+                  minMatchCharLength: 2,
+                  shouldSort: true,
+                  findAllMatches: false,
+                  location: 0,
+                  threshold: 0.1,
+                  distance: 100,
+                  ignoreLocation: true,
+                  keys: ["title", "content"],
+                  ...searchConfig.fuse,
                 });
-            } else finish(search());
-          },
-          templates: {
-            suggestion: ({ title, date, context }) =>
-              `<div><span class="suggestion-title">${title}</span><span class="suggestion-date">${date}</span></div><div class="suggestion-context">${context}</div>`,
-            empty: ({ query }) =>
-              `<div class="search-empty">${searchConfig.noResultsFound}: <span class="search-query">"${query}"</span></div>`,
-            footer: () =>
-              `<div class="search-footer">Search by <a href="https://lunrjs.com/" rel="noopener noreffer" target="_blank">Lunr.js</a></div>`,
-          },
-        }
-      );
-      // eslint-disable-next-line no-unused-vars
-      autosearch.on("autocomplete:selected", (_event, suggestion, _dataset, _context) => {
-        window.location.assign(suggestion.uri);
-      });
-      if (isMobile) this._searchMobile = autosearch;
-      else this._searchDesktop = autosearch;
-    };
-    if (searchConfig.lunrSegmentitURL && !document.getElementById("lunr-segmentit")) {
-      const script = document.createElement("script");
-      script.id = "lunr-segmentit";
-      script.type = "text/javascript";
-      script.src = searchConfig.lunrSegmentitURL;
-      script.async = true;
-      if (script.readyState) {
-        script.onreadystatechange = () => {
-          if (script.readyState == "loaded" || script.readyState == "complete") {
-            script.onreadystatechange = null;
-            initAutosearch();
-          }
-        };
-      } else {
-        script.onload = () => {
-          initAutosearch();
-        };
+                finish(search());
+              })
+              .catch((err) => {
+                console.error(err);
+                finish([]);
+              });
+          } else finish(search());
+        },
+        templates: {
+          suggestion: ({ title, date, context }) =>
+            `<div><span class="suggestion-title">${title}</span><span class="suggestion-date">${date}</span></div><div class="suggestion-context">${context}</div>`,
+          empty: ({ query }) =>
+            `<div class="search-empty">${searchConfig.noResultsFound}: <span class="search-query">"${query}"</span></div>`,
+          footer: () =>
+            `<div class="search-footer">Search by <a href="https://fusejs.io/" rel="noopener noreffer" target="_blank">Fuse.js</a></div>`,
+        },
       }
-      document.body.appendChild(script);
-    } else initAutosearch();
+    );
+    // eslint-disable-next-line no-unused-vars
+    autosearch.on("autocomplete:selected", (_event, suggestion, _dataset, _context) => {
+      window.location.assign(suggestion.uri);
+    });
+    if (isMobile) this._searchMobile = autosearch;
+    else this._searchDesktop = autosearch;
   }
 
   initDetails() {
