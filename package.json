@@ -4,6 +4,8 @@
   "description": "LikeIt theme source file",
   "private": true,
   "devDependencies": {
+    "eslint": "^8.40.0",
+    "prettier": "^2.8.8",
     "@babel/cli": "^7.21.5",
     "@babel/core": "^7.21.8",
     "@babel/preset-env": "^7.21.5",
