@@ -89,8 +89,8 @@
             {{- $commentConfig = $giscus.emitMetadata | default "0" | dict "emitMetadata" | dict "giscus" | merge $commentConfig -}}
             {{- $commentConfig = $giscus.inputPosition | default "bottom" | dict "inputPosition" | dict "giscus" | merge $commentConfig -}}
             {{- $commentConfig = $giscus.lazyLoading | default false | dict "lazyLoading" | dict "giscus" | merge $commentConfig -}}
-            {{- $commentConfig = $giscus.lightTheme | default "github-light" | dict "lightTheme" | dict "giscus" | merge $commentConfig -}}
-            {{- $commentConfig = $giscus.darkTheme | default "github-dark" | dict "darkTheme" | dict "giscus" | merge $commentConfig -}}
+            {{- $commentConfig = $giscus.lightTheme | default "light" | dict "lightTheme" | dict "giscus" | merge $commentConfig -}}
+            {{- $commentConfig = $giscus.darkTheme | default "dark" | dict "darkTheme" | dict "giscus" | merge $commentConfig -}}
             <noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://giscus.app">Giscus</a>.
             </noscript>
