@@ -74,9 +74,6 @@ other = "Cancel·lar"
 [noResultsFound]
 other = "Sense resultats"
 
-[lunrLanguageCode]
-other = "ca"
-
 [copyToClipboard]
 other = "Copiar al portapapers"
 # === partials/assets.html ===

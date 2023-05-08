@@ -74,9 +74,6 @@ other = "रद्द करना"
 [noResultsFound]
 other = "कोई परिणाम नहीं मिला"
 
-[lunrLanguageCode]
-other = "hi"
-
 [copyToClipboard]
 other = "क्लिपबोर्ड पर कॉपी करें"
 # === partials/assets.html ===

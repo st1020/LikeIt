@@ -74,9 +74,6 @@ other = "취소"
 [noResultsFound]
 other = "검색 결과 없음"
 
-[lunrLanguageCode]
-other = "en"
-
 [copyToClipboard]
 other = "복사하기"
 # === partials/assets.html ===

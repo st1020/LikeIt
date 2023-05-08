@@ -74,9 +74,6 @@ other = "إلغاء"
 [noResultsFound]
 other = "لا يوجد نتائج"
 
-[lunrLanguageCode]
-other = "ar"
-
 [copyToClipboard]
 other = "نسخ"
 # === partials/assets.html ===

@@ -74,10 +74,6 @@ other = "రద్దు"
 [noResultsFound]
 other = "ఎటువంటి ఫలితాలు లభించలేదు"
 
-[lunrLanguageCode]
-# not supported
-other = "te"
-
 [copyToClipboard]
 other = "క్లిప్‌బోర్డ్‌కు కాపీ చేయండి"
 # === partials/assets.html ===

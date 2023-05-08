@@ -74,9 +74,6 @@ other = "Batal"
 [noResultsFound]
 other = "Hasil tidak ditemukan"
 
-[lunrLanguageCode]
-other = "en"
-
 [copyToClipboard]
 other = "Salin ke papan klip"
 # === partials/assets.html ===
