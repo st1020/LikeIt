@@ -292,9 +292,18 @@ class Theme {
   initDetails() {
     forEach(document.getElementsByClassName("details"), ($details) => {
       const $summary = $details.getElementsByClassName("details-summary")[0];
+      const $content = $details.getElementsByClassName("details-content")[0];
+      if ($details.classList.contains("open")) {
+        $content.style.maxHeight = $content.scrollHeight + "px";
+      }
       $summary.addEventListener(
         "click",
         () => {
+          if ($details.classList.contains("open")) {
+            $content.style.maxHeight = null;
+          } else {
+            $content.style.maxHeight = $content.scrollHeight + "px";
+          }
           $details.classList.toggle("open");
         },
         false
@@ -320,6 +329,7 @@ class Theme {
     forEach(document.querySelectorAll(".highlight > .chroma"), ($chroma) => {
       const $codeElements = $chroma.querySelectorAll("pre.chroma > code");
       if ($codeElements.length) {
+        const $content = $chroma.getElementsByClassName("table-wrapper")[0];
         const $code = $codeElements[$codeElements.length - 1];
         const $header = document.createElement("div");
         $header.className = "code-header " + $code.className.toLowerCase();
@@ -329,6 +339,11 @@ class Theme {
         $title.addEventListener(
           "click",
           () => {
+            if ($chroma.classList.contains("open")) {
+              $content.style.maxHeight = null;
+            } else {
+              $content.style.maxHeight = $content.scrollHeight + "px";
+            }
             $chroma.classList.toggle("open");
           },
           false
@@ -349,8 +364,10 @@ class Theme {
         $copy.insertAdjacentHTML("afterbegin", '<i class="far fa-copy fa-fw" aria-hidden="true"></i>');
         $copy.classList.add("copy");
         const code = $code.innerText;
-        if (this.config.code.maxShownLines < 0 || code.split("\n").length < this.config.code.maxShownLines + 2)
+        if (this.config.code.maxShownLines < 0 || code.split("\n").length < this.config.code.maxShownLines + 2) {
           $chroma.classList.add("open");
+          $content.style.maxHeight = $content.scrollHeight + "px";
+        }
         if (this.config.code.copyTitle) {
           $copy.setAttribute("data-clipboard-text", code);
           $copy.title = this.config.code.copyTitle;
@@ -616,9 +633,9 @@ class Theme {
       this.initMenuMobile();
       this.initSwitchTheme();
       this.initSearch();
+      this.initTable();
       this.initDetails();
       this.initHighlight();
-      this.initTable();
       this.initHeaderLink();
       this.initMath();
     } catch (err) {
