@@ -13,9 +13,9 @@ libFiles:
   fuseJs: fuse.js/6.6.2/fuse.min.js
   # clipboard.js@2.0.11 https://github.com/zenorocha/clipboard.js
   clipboardJS: clipboard.js/2.0.11/clipboard.min.js
-  # katex@0.16.0 https://katex.org/
-  katexCSS: KaTeX/0.16.0/katex.min.css
-  katexJS: KaTeX/0.16.0/katex.min.js
-  katexAutoRenderJS: KaTeX/0.16.0/contrib/auto-render.min.js
-  katexCopyTexJS: KaTeX/0.16.0/contrib/copy-tex.min.js
-  katexMhchemJS: KaTeX/0.16.0/contrib/mhchem.min.js
+  # katex@0.16.7 https://katex.org/
+  katexCSS: KaTeX/0.16.7/katex.min.css
+  katexJS: KaTeX/0.16.7/katex.min.js
+  katexAutoRenderJS: KaTeX/0.16.7/contrib/auto-render.min.js
+  katexCopyTexJS: KaTeX/0.16.7/contrib/copy-tex.min.js
+  katexMhchemJS: KaTeX/0.16.7/contrib/mhchem.min.js
