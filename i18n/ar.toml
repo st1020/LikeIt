@@ -55,7 +55,7 @@ other = "يعمل الموقع بنظام {{ .Hugo }} | التصميم مقدم 
 other = "ar_AR"
 
 [giscusLang]
-other = "en"
+other = "ar"
 # === partials/comment.html ===
 
 # === partials/assets.html ===

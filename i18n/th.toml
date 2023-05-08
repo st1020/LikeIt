@@ -55,7 +55,7 @@ other = "เว็บนี้สร้างโดย {{ .Hugo }} | ธีม -
 other = "th_TH"
 
 [giscusLang]
-other = "en"
+other = "th"
 # === partials/comment.html ===
 
 # === partials/assets.html ===

@@ -55,7 +55,7 @@ other = "Possibilitado por {{ .Hugo }} | Tema - {{ .Theme }}"
 other = "pt_BR"
 
 [giscusLang]
-other = "en"
+other = "pt"
 # === partials/comment.html ===
 
 # === partials/assets.html ===
