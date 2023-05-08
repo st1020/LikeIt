@@ -61,16 +61,6 @@
             </div>
         {{- end -}}
 
-        {{- /* Commento Comment System */ -}}
-        {{- $commento := $comment.commento | default dict -}}
-        {{- if $commento.enable -}}
-            <div id="commento" class="comment"></div>
-            {{- dict "Source" "https://cdn.commento.io/js/commento.js" "Defer" true | dict "Scratch" .Scratch "Data" | partial "scratch/script.html" -}}
-            <noscript>
-                Please enable JavaScript to view the comments powered by <a href="https://commento.io/">Commento</a>.
-            </noscript>
-        {{- end -}}
-
         {{- /* utterances Comment System */ -}}
         {{- $utterances := $comment.utterances | default dict -}}
         {{- if $utterances.enable -}}

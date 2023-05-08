@@ -464,10 +464,6 @@ color = ""
 colorful = true
 dislikes = false
 outlined = false
-# Commento comment config (https://commento.io/)
-# Commento comment 评论系统设置 (https://commento.io/)
-[params.page.comment.commento]
-enable = false
 # utterances comment config (https://utteranc.es/)
 # utterances comment 评论系统设置 (https://utteranc.es/)
 [params.page.comment.utterances]
