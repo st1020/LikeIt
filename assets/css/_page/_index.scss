@@ -8,7 +8,7 @@
     padding-top: var(--header-height);
   }
 
-  [data-header-desktop=normal] & {
+  [data-header-desktop="normal"] & {
     padding-top: 0;
   }
 

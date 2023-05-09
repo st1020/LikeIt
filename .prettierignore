@@ -1,0 +1,6 @@
+layouts
+assets/lib
+pnpm-lock.yaml
+*.html
+*.md
+*.json

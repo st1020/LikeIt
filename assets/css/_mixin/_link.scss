@@ -1,5 +1,7 @@
 @mixin link($light, $dark) {
-  a, a::before, a::after {
+  a,
+  a::before,
+  a::after {
     text-decoration: none;
 
     @if $light {
@@ -8,7 +10,7 @@
       color: $single-link-color;
     }
 
-    [theme=dark] & {
+    [theme="dark"] & {
       @if $dark {
         color: $global-link-color-dark;
       } @else {
@@ -25,7 +27,7 @@
       color: $single-link-hover-color;
     }
 
-    [theme=dark] & {
+    [theme="dark"] & {
       @if $dark {
         color: $global-link-hover-color-dark;
       } @else {
