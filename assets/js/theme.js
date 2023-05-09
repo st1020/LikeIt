@@ -634,8 +634,8 @@ class Theme {
       this.initSwitchTheme();
       this.initSearch();
       this.initTable();
-      this.initDetails();
       this.initHighlight();
+      this.initDetails();
       this.initHeaderLink();
       this.initMath();
     } catch (err) {
