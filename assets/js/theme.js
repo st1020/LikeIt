@@ -312,24 +312,10 @@ class Theme {
   }
 
   initHighlight() {
-    forEach(document.querySelectorAll(".highlight > pre.chroma"), ($preChroma) => {
-      const $chroma = document.createElement("div");
-      $chroma.className = $preChroma.className;
-      const $table = document.createElement("table");
-      $chroma.appendChild($table);
-      const $tbody = document.createElement("tbody");
-      $table.appendChild($tbody);
-      const $tr = document.createElement("tr");
-      $tbody.appendChild($tr);
-      const $td = document.createElement("td");
-      $tr.appendChild($td);
-      $preChroma.parentElement.replaceChild($chroma, $preChroma);
-      $td.appendChild($preChroma);
-    });
-    forEach(document.querySelectorAll(".highlight > .chroma"), ($chroma) => {
-      const $codeElements = $chroma.querySelectorAll("pre.chroma > code");
+    forEach(document.querySelectorAll(".code-wrapper"), ($codeWrapper) => {
+      const $highlight = $codeWrapper.querySelectorAll(".highlight")[0];
+      const $codeElements = $highlight.querySelectorAll("pre.chroma > code");
       if ($codeElements.length) {
-        const $content = $chroma.getElementsByClassName("table-wrapper")[0];
         const $code = $codeElements[$codeElements.length - 1];
         const $header = document.createElement("div");
         $header.className = "code-header " + $code.className.toLowerCase();
@@ -339,12 +325,12 @@ class Theme {
         $title.addEventListener(
           "click",
           () => {
-            if ($chroma.classList.contains("open")) {
-              $content.style.maxHeight = null;
+            if ($codeWrapper.classList.contains("open")) {
+              $highlight.style.maxHeight = null;
             } else {
-              $content.style.maxHeight = $content.scrollHeight + "px";
+              $highlight.style.maxHeight = $highlight.scrollHeight + "px";
             }
-            $chroma.classList.toggle("open");
+            $codeWrapper.classList.toggle("open");
           },
           false
         );
@@ -355,7 +341,7 @@ class Theme {
         $ellipses.addEventListener(
           "click",
           () => {
-            $chroma.classList.add("open");
+            $codeWrapper.classList.add("open");
           },
           false
         );
@@ -363,10 +349,11 @@ class Theme {
         const $copy = document.createElement("span");
         $copy.insertAdjacentHTML("afterbegin", '<i class="far fa-copy fa-fw" aria-hidden="true"></i>');
         $copy.classList.add("copy");
-        const code = $code.innerText;
+        const code = $code.textContent;
         if (this.config.code.maxShownLines < 0 || code.split("\n").length < this.config.code.maxShownLines + 2) {
-          $chroma.classList.add("open");
-          $content.style.maxHeight = $content.scrollHeight + "px";
+          $highlight.style.maxHeight = $highlight.scrollHeight + "px";
+        } else {
+          $codeWrapper.classList.remove("open");
         }
         if (this.config.code.copyTitle) {
           $copy.setAttribute("data-clipboard-text", code);
@@ -378,17 +365,8 @@ class Theme {
           });
           $header.appendChild($copy);
         }
-        $chroma.insertBefore($header, $chroma.firstChild);
+        $codeWrapper.insertBefore($header, $codeWrapper.firstChild);
       }
-    });
-  }
-
-  initTable() {
-    forEach(document.querySelectorAll(".content table"), ($table) => {
-      const $wrapper = document.createElement("div");
-      $wrapper.className = "table-wrapper";
-      $table.parentElement.replaceChild($wrapper, $table);
-      $wrapper.appendChild($table);
     });
   }
 
@@ -633,7 +611,6 @@ class Theme {
       this.initMenuMobile();
       this.initSwitchTheme();
       this.initSearch();
-      this.initTable();
       this.initHighlight();
       this.initDetails();
       this.initHeaderLink();

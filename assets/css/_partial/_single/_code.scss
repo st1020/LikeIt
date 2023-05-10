@@ -41,103 +41,136 @@ pre,
   }
 }
 
-.highlight {
+.code-wrapper {
+  margin: 0.5rem 0;
   font-family: var(--code-font-family);
   font-size: var(--code-font-size);
   line-height: 1.4em;
-  margin: 0.5rem 0;
 
-  .table-wrapper {
-    > table,
-    > table thead,
-    > table tr,
-    > table td {
-      margin: 0;
-      padding: 0;
-      border: none !important;
-
-      span.c {
-        white-space: nowrap;
-      }
-    }
-  }
-
-  > .chroma {
+  .highlight {
+    margin: 0;
     position: relative;
+    max-height: 0;
+    overflow-y: hidden;
+    @include details-transition;
 
-    .code-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-sizing: border-box;
-      width: 100%;
-      font-family: var(--global-font-family);
-      font-weight: bold;
-      color: $code-info-color;
-      background: darken($code-background-color, 8%);
+    > .chroma {
+      table,
+      table thead,
+      table tr,
+      table td {
+        margin: 0;
+        padding: 0;
+        border: none !important;
 
-      [theme="dark"] & {
-        color: $code-info-color-dark;
-        background: darken($code-background-color-dark, 6%);
+        span.c {
+          white-space: nowrap;
+        }
       }
 
-      &:hover {
-        cursor: pointer;
+      .lntd:first-child {
+        min-width: 1.6rem;
+        text-align: right;
       }
 
-      .code-title {
+      .lntd:last-child {
         width: 100%;
-        padding: 0.4rem;
+        max-width: 0;
+        overflow-y: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+
+        pre {
+          @include max-content(min-width);
+        }
       }
 
-      .code-title::after {
-        padding-left: 0.2rem;
-        content: "Code";
+      .ln {
+        padding-right: 0.75rem;
       }
 
-      @each $type, $text in $code-type-list {
-        &.#{$type} .code-title::after {
-          content: $text;
+      .hl {
+        display: block;
+        background-color: darken($code-background-color, 10%);
+
+        [theme="dark"] & {
+          background-color: darken($code-background-color-dark, 5%);
+        }
+      }
+
+      .ln,
+      .lnt {
+        color: $global-font-secondary-color;
+
+        [theme="dark"] & {
+          color: $global-font-secondary-color-dark;
         }
       }
     }
 
-    .lntd:first-child {
-      min-width: 1.6rem;
-      text-align: right;
+    /* Comment */
+    .c,
+    /* CommentHashbang */  .ch,
+    /* CommentMultiline */  .cm,
+    /* CommentSingle */  .c1,
+    /* CommentSpecial */  .cs,
+    /* CommentPreproc */  .cp,
+    /* CommentPreprocFile */  .cpf {
+      font-style: italic;
+    }
+    /* GenericUnderline */
+    .gl {
+      text-decoration: underline;
     }
 
-    .lntd:last-child {
+    @each $class, $color in $code-highlight-color-map {
+      .#{$class} {
+        color: $color;
+      }
+    }
+
+    [theme="dark"] & {
+      @each $class, $color in $code-highlight-color-map-dark {
+        .#{$class} {
+          color: $color;
+        }
+      }
+    }
+  }
+
+  .code-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    width: 100%;
+    font-family: var(--global-font-family);
+    font-weight: bold;
+    color: $code-info-color;
+    background: darken($code-background-color, 8%);
+
+    [theme="dark"] & {
+      color: $code-info-color-dark;
+      background: darken($code-background-color-dark, 6%);
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    .code-title {
       width: 100%;
-      max-width: 0;
-      overflow: auto;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-
-      pre {
-        @include max-content(min-width);
-      }
+      padding: 0.4rem;
     }
 
-    .ln {
-      padding-right: 0.75rem;
+    .code-title::after {
+      padding-left: 0.2rem;
+      content: "Code";
     }
 
-    .hl {
-      display: block;
-      background-color: darken($code-background-color, 10%);
-
-      [theme="dark"] & {
-        background-color: darken($code-background-color-dark, 5%);
-      }
-    }
-
-    .ln,
-    .lnt {
-      color: $global-font-secondary-color;
-
-      [theme="dark"] & {
-        color: $global-font-secondary-color-dark;
+    @each $type, $text in $code-type-list {
+      &.#{$type} .code-title::after {
+        content: $text;
       }
     }
 
@@ -163,24 +196,18 @@ pre,
         }
       }
     }
+  }
 
-    .table-wrapper {
-      max-height: 0;
-      overflow-y: hidden;
-      @include details-transition;
+  &.open {
+    .highlight {
+      max-height: none;
     }
 
-    &.open {
-      .code-header {
-        background: darken($code-background-color, 3%);
+    .code-header {
+      background: darken($code-background-color, 3%);
 
-        [theme="dark"] & {
-          background: darken($code-background-color-dark, 3%);
-        }
-      }
-
-      .table-wrapper {
-        max-height: none;
+      [theme="dark"] & {
+        background: darken($code-background-color-dark, 3%);
       }
 
       .arrow {
@@ -196,50 +223,19 @@ pre,
       }
     }
   }
-
-  /* Comment */
-  .c,
-  /* CommentHashbang */  .ch,
-  /* CommentMultiline */  .cm,
-  /* CommentSingle */  .c1,
-  /* CommentSpecial */  .cs,
-  /* CommentPreproc */  .cp,
-  /* CommentPreprocFile */  .cpf {
-    font-style: italic;
-  }
-  /* GenericUnderline */
-  .gl {
-    text-decoration: underline;
-  }
-
-  @each $class, $color in $code-highlight-color-map {
-    .#{$class} {
-      color: $color;
-    }
-  }
-
-  [theme="dark"] & {
-    @each $class, $color in $code-highlight-color-map-dark {
-      .#{$class} {
-        color: $color;
-      }
-    }
-  }
 }
 
 .gist {
   font-family: var(--code-font-family);
   font-size: var(--code-font-size);
 
-  .table-wrapper {
-    > table,
-    > table thead,
-    > table tr,
-    > table td {
-      margin: 0;
-      padding: 0;
-      border: none !important;
-    }
+  table,
+  table thead,
+  table tr,
+  table td {
+    margin: 0;
+    padding: 0;
+    border: none !important;
   }
 
   .gist-file,
