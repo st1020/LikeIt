@@ -7,7 +7,7 @@
 
   i.details-icon {
     color: $global-font-secondary-color;
-    @include transition(transform 0.2s ease);
+    transition: transform 0.2s ease;
 
     [theme="dark"] & {
       color: $global-font-secondary-color-dark;
@@ -22,7 +22,7 @@
 
   &.open {
     i.details-icon {
-      @include transform(rotate(90deg));
+      transform: rotate(90deg);
     }
 
     .details-content {

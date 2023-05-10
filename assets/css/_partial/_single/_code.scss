@@ -176,7 +176,7 @@ pre,
 
     .arrow {
       padding: 0 0.2rem;
-      @include transition(transform 0.2s ease);
+      transition: transform 0.2s ease;
     }
 
     .ellipses {
@@ -211,7 +211,7 @@ pre,
       }
 
       .arrow {
-        @include transform(rotate(90deg));
+        transform: rotate(90deg);
       }
 
       .ellipses {

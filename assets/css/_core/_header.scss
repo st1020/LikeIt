@@ -2,7 +2,7 @@ header {
   width: 100%;
   z-index: 150;
   background-color: $header-background-color;
-  @include transition(box-shadow 0.3s ease);
+  transition: box-shadow 0.3s ease;
 
   [theme="dark"] & {
     background-color: $header-background-color-dark;
@@ -24,7 +24,7 @@ header {
   }
 
   &:hover {
-    @include box-shadow(0 0 1.5rem 0 rgba(0, 0, 0, 0.1));
+    box-shadow: 0 0 1.5rem 0 rgba(0, 0, 0, 0.1);
   }
 }
 
@@ -44,7 +44,7 @@ header {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  @include flex(10);
+  flex: 10;
 }
 
 .menu .menu-item {
@@ -72,12 +72,12 @@ header {
     box-sizing: border-box;
     height: 2.5rem;
     width: 2.5rem;
-    @include border-radius(0.5rem);
+    border-radius: 0.5rem;
     border: none;
     outline: none;
     background-color: $header-background-color;
     vertical-align: baseline !important;
-    @include transition(width 0.3s ease);
+    transition: width 0.3s ease;
 
     [theme="dark"] & {
       background-color: $header-background-color-dark;
@@ -144,7 +144,7 @@ header {
 }
 
 .theme-switch i {
-  @include transform(rotate(225deg));
+  transform: rotate(225deg);
 }
 
 #header-desktop {
@@ -229,7 +229,7 @@ header {
     .header-wrapper {
       padding: 0 1rem;
       font-size: 1.125rem;
-      @include transition(margin-top 0.3s ease);
+      transition: margin-top 0.3s ease;
 
       .header-title {
         font-size: var(--header-title-font-size);
@@ -239,15 +239,15 @@ header {
       .menu-toggle {
         line-height: 4rem;
         cursor: pointer;
-        @include transition(width 0.3s ease);
+        transition: width 0.3s ease;
 
         span {
           display: block;
           background: $global-font-color;
           width: 1.5rem;
           height: 2px;
-          @include border-radius(3px);
-          @include transition(all 0.3s ease-in-out);
+          border-radius: 3px;
+          transition: all 0.3s ease-in-out;
 
           [theme="dark"] & {
             background: $global-font-color-dark;
@@ -264,7 +264,7 @@ header {
 
         &.active {
           span:nth-child(1) {
-            @include transform(rotate(45deg) translate(0.4rem, 0.5rem));
+            transform: rotate(45deg) translate(0.4rem, 0.5rem);
           }
 
           span:nth-child(2) {
@@ -272,7 +272,7 @@ header {
           }
 
           span:nth-child(3) {
-            @include transform(rotate(-45deg) translate(0.4rem, -0.5rem));
+            transform: rotate(-45deg) translate(0.4rem, -0.5rem);
           }
         }
       }
@@ -284,7 +284,7 @@ header {
       border-top: 2px solid $global-border-color;
       display: none;
       padding-top: 0.5rem;
-      @include box-shadow(0 0.125rem 0.25rem rgba(0, 0, 0, 0.1));
+      box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
 
       .search-wrapper {
         display: flex;
@@ -348,7 +348,7 @@ header {
   position: fixed;
   z-index: 200;
   top: var(--header-height);
-  @include box-shadow(0 0.125rem 0.25rem rgba(0, 0, 0, 0.1));
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
 
   &.desktop {
     right: 2rem;
@@ -398,10 +398,7 @@ header {
 
         .suggestion-context {
           line-height: 1.25rem;
-          @include box(vertical);
-          -webkit-line-clamp: 2;
-          overflow: hidden;
-          text-overflow: ellipsis;
+          @include line-clamp(2);
           @include overflow-wrap(break-word);
           color: $global-font-secondary-color;
 

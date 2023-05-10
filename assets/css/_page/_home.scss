@@ -1,6 +1,6 @@
 .home {
   .home-profile {
-    @include transform(translateY(16vh));
+    transform: translateY(16vh);
     padding: 0 0 0.5rem;
     text-align: center;
 
@@ -12,13 +12,13 @@
         width: 8rem;
         height: auto;
         margin: 0 auto;
-        @include border-radius(100%);
-        @include box-shadow(0 0 0 0.3618em rgba(0, 0, 0, 0.05));
-        @include transition(all 0.4s ease);
+        border-radius: 100%;
+        box-shadow: 0 0 0 0.3618em rgba(0, 0, 0, 0.05);
+        transition: all 0.4s ease;
 
         &:hover {
           position: relative;
-          @include transform(translateY(-0.75rem));
+          transform: translateY(-0.75rem);
         }
       }
     }
@@ -68,7 +68,7 @@
 
 .home[data-home="posts"] {
   .home-profile {
-    @include transform(translateY(0));
+    transform: translateY(0);
     padding-top: 2rem;
   }
 
@@ -92,7 +92,7 @@
       padding: 30% 0 0;
       position: relative;
       margin: 0.6rem auto;
-      @include transition(transform 0.4s ease);
+      transition: transform 0.4s ease;
 
       img {
         position: absolute;
@@ -103,7 +103,7 @@
       }
 
       &:hover {
-        @include transform(scale(1.01));
+        transform: scale(1.01);
       }
     }
 
@@ -114,12 +114,9 @@
     }
 
     .content {
-      @include box(vertical);
-      -webkit-line-clamp: 3;
       margin-top: 0.3rem;
       width: 100%;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      @include line-clamp(3);
       @include overflow-wrap(break-word);
       color: $global-font-secondary-color;
 
