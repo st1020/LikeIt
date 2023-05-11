@@ -6,3 +6,4 @@ autocomplete@0.38.1 https://github.com/algolia/autocomplete
 fuse.js@6.6.2 https://fusejs.io/
 clipboard.js@2.0.11 https://github.com/zenorocha/clipboard.js
 katex@0.16.7 https://katex.org/
+mermaid@10.1.0 https://github.com/mermaid-js/mermaid

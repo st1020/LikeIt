@@ -460,6 +460,31 @@ class Theme {
     if (this.config.math) renderMathInElement(document.body, this.config.math);
   }
 
+  initMermaid() {
+    if (this.config.mermaid) {
+      import(this.config.mermaid.source).then(({ default: mermaid }) => {
+        this._mermaidReload =
+          this._mermaidReload ||
+          (() => {
+            const $mermaidElements = document.getElementsByClassName("mermaid");
+            if ($mermaidElements.length) {
+              mermaid.initialize({
+                startOnLoad: false,
+                theme: this.isDark ? "dark" : "default",
+              });
+              forEach($mermaidElements, async ($mermaid) => {
+                const { svg } = await mermaid.render("svg-" + $mermaid.id, this.data[$mermaid.id], $mermaid);
+                $mermaid.innerHTML = svg;
+              });
+            }
+          });
+        this.switchThemeEventSet.add(this._mermaidReload);
+        this.resizeEventSet.add(this._mermaidReload);
+        this._mermaidReload();
+      });
+    }
+  }
+
   initComment() {
     if (this.config.comment) {
       if (this.config.comment.utterances) {
@@ -615,6 +640,7 @@ class Theme {
       this.initDetails();
       this.initHeaderLink();
       this.initMath();
+      this.initMermaid();
     } catch (err) {
       console.error(err);
     }

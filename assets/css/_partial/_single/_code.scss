@@ -34,10 +34,10 @@ pre,
 .highlight table,
 .highlight tr,
 .highlight td {
-  background: $code-background-color !important;
+  background: $code-background-color;
 
   [theme="dark"] & {
-    background: $code-background-color-dark !important;
+    background: $code-background-color-dark;
   }
 }
 

@@ -19,3 +19,5 @@ libFiles:
   katexAutoRenderJS: katex@0.16.7/dist/contrib/auto-render.min.js
   katexCopyTexJS: katex@0.16.7/dist/contrib/copy-tex.min.js
   katexMhchemJS: katex@0.16.7/dist/contrib/mhchem.min.js
+  # mermaid@10.1.0https://github.com/mermaid-js/mermaid
+  mermaidJS: ermaid@10.1.0/dist/mermaid.esm.min.mjs

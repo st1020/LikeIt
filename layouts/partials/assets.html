@@ -67,6 +67,15 @@
     {{- $config = dict "strict" false "delimiters" $delimiters | dict "math" | merge $config -}}
 {{- end -}}
 
+{{- /* mermaid */ -}}
+{{- if (.Scratch.Get "this").mermaid -}}
+    {{- range resources.Match "lib/mermaid/*." -}}
+        {{- $_ := .RelPermalink -}}
+    {{- end -}}
+    {{- $source := $cdn.mermaidJS | default "/lib/mermaid/mermaid.esm.min.mjs" -}}
+    {{- $config = dict "source" $source | dict "mermaid" | merge $config -}}
+{{- end -}}
+
 {{- range $params.library.css -}}
     {{- dict "Source" . "Fingerprint" $fingerprint | dict "Scratch" $.Scratch "Data" | partial "scratch/style.html" -}}
 {{- end -}}
