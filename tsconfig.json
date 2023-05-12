@@ -1,0 +1,12 @@
+{
+    "extends": "@tsconfig/recommended/tsconfig.json",
+    "files": [
+        "assets/js/theme.ts"
+    ],
+    "compilerOptions": {
+        "lib": [
+            "DOM",
+            "ESNext"
+        ],
+    }
+}

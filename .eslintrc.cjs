@@ -2,10 +2,15 @@
 
 module.exports = {
   root: true,
-  extends: ["eslint:recommended"],
+  extends: ["eslint:recommended", "plugin:@typescript-eslint/recommended", "prettier"],
+  parser: "@typescript-eslint/parser",
+  plugins: ["@typescript-eslint"],
   ignorePatterns: ["assets/lib/**"],
-  env: {
-    browser: true,
-    esnext: true,
+  rules: {
+    "@typescript-eslint/ban-ts-comment": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+  },
+  parserOptions: {
+    ecmaVersion: "latest",
   },
 };
