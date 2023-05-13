@@ -1,8 +1,50 @@
 import type { default as FuseType } from "fuse.js";
 import type { default as ClipboardJSType } from "clipboard";
-import type { default as renderMathInElementType } from "katex/contrib/auto-render";
+import type { default as renderMathInElementType, RenderMathInElementOptions } from "katex/contrib/auto-render";
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type autocompleteType = any;
 declare const ClipboardJS: typeof ClipboardJSType;
-declare const autocomplete: any;
+declare const autocomplete: (
+  selector: string,
+  options: {
+    autoselect?: boolean;
+    autoselectOnBlur?: boolean;
+    tabAutocomplete?: boolean;
+    hint?: boolean;
+    debug?: boolean;
+    clearOnSelected?: boolean;
+    openOnFocus?: boolean;
+    appendTo?: string;
+    dropdownMenuContainer?: string;
+    cssClasses?: {
+      root?: string;
+      prefix?: string;
+      noPrefix?: boolean;
+      dropdownMenu?: string;
+      input?: string;
+      hint?: string;
+      suggestions?: string;
+      suggestion?: string;
+      cursor?: string;
+      dataset?: string;
+      empty?: string;
+    };
+    keyboardShortcuts?: string[];
+    ariaLabel?: string;
+    minLength?: number;
+    autoWidth?: boolean;
+  },
+  datasets: {
+    name: string;
+    source: (query: string, callback: (arg: SearchIndex[]) => void) => void;
+    templates: {
+      empty?: (param: { query: string; isEmpty: boolean }) => string;
+      footer?: (param: { query: string; isEmpty: boolean }) => string;
+      header?: (param: { query: string; isEmpty: boolean }) => string;
+      suggestion?: (suggestion: SearchIndex) => void;
+    };
+  }
+) => autocompleteType;
 declare const Fuse: typeof FuseType;
 declare const renderMathInElement: typeof renderMathInElementType;
 
@@ -22,11 +64,57 @@ interface SearchIndex {
 
 interface Config {
   data?: { [index: string]: string };
-  search?: any;
-  code?: any;
-  math?: any;
-  mermaid?: any;
-  comment?: any;
+  code: {
+    copy: boolean;
+    maxShownLines: number;
+    copyTitle?: string;
+  };
+  search?: {
+    enable: boolean;
+    contentLength: number;
+    placeholder: string;
+    maxResultLength: number;
+    highlightTag: string;
+    absoluteURL: boolean;
+    indexURL: string;
+    noResultsFound: string;
+    fuse: FuseType.IFuseOptions<Index>;
+  };
+  math?: {
+    enable: boolean;
+    inlineLeftDelimiter: string;
+    inlineRightDelimiter: string;
+    blockLeftDelimiter: string;
+    blockRightDelimiter: string;
+    copyTex: boolean;
+    mhchem: boolean;
+  } & RenderMathInElementOptions;
+  mermaid?: { source: string };
+  comment?: {
+    utterances?: {
+      enable: boolean;
+      repo: string;
+      issueTerm: string;
+      label: string;
+      lightTheme: string;
+      darkTheme: string;
+    };
+    giscus?: {
+      enable: boolean;
+      repo: string;
+      repoId: string;
+      category: string;
+      categoryId: string;
+      lang: string;
+      mapping: string;
+      reactionsEnabled: string;
+      emitMetadata: string;
+      inputPosition: string;
+      lazyLoading: boolean;
+      lightTheme: string;
+      darkTheme: string;
+    };
+  };
 }
 
 function getScrollTop() {
@@ -143,8 +231,8 @@ class Theme {
   _index?: FuseType<Index>;
   _searchMobileOnce?: boolean;
   _searchDesktopOnce?: boolean;
-  _searchMobile?: any;
-  _searchDesktop?: any;
+  _searchMobile?: autocompleteType;
+  _searchDesktop?: autocompleteType;
   _searchDesktopOnClickMask?: () => void;
   _searchMobileOnClickMask?: () => void;
   initSearch() {
@@ -247,7 +335,7 @@ class Theme {
       },
       {
         name: "search",
-        source: (query: string, callback: (arg: SearchIndex[]) => void) => {
+        source: (query, callback) => {
           $searchLoading.style.display = "inline";
           $searchClear.style.display = "none";
           const finish = (results: SearchIndex[]) => {
@@ -320,7 +408,7 @@ class Theme {
         },
       }
     );
-    autosearch.on("autocomplete:selected", (_event: any, suggestion: { uri: string | URL }) => {
+    autosearch.on("autocomplete:selected", (_event: unknown, suggestion: { uri: string | URL }) => {
       window.location.assign(suggestion.uri);
     });
     if (isMobile) this._searchMobile = autosearch;
@@ -547,7 +635,6 @@ class Theme {
         };
         this.switchThemeEventSet.add(this._utterancesOnSwitchTheme);
       }
-
       if (this.config.comment.giscus) {
         const giscusConfig = this.config.comment.giscus;
         const giscusScript = document.createElement("script");
