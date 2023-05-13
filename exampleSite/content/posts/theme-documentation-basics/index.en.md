@@ -6,7 +6,7 @@ lastmod: 2020-03-06T21:29:01+08:00
 draft: false
 author: "Dillon"
 authorLink: "https://dillonzq.com"
-description: "Discover what the Hugo - LoveIt theme is all about and the core-concepts behind it."
+description: "Discover what the Hugo - LikeIt theme is all about and the core-concepts behind it."
 images: []
 resources:
 - name: "featured-image"
@@ -19,7 +19,7 @@ toc:
   auto: false
 ---
 
-Discover what the Hugo - **LoveIt** theme is all about and the core-concepts behind it.
+Discover what the Hugo - **LikeIt** theme is all about and the core-concepts behind it.
 
 <!--more-->
 
@@ -33,8 +33,8 @@ Just install latest version of [:(far fa-file-archive fa-fw): Hugo (> 0.62.0)](h
 Since [Markdown Render Hooks](https://gohugo.io/getting-started/configuration-markup#markdown-render-hooks) was introduced in the [Hugo Christmas Edition](https://gohugo.io/news/0.62.0-relnotes/), this theme only supports Hugo versions above **0.62.0**.
 {{< /admonition >}}
 
-{{< admonition tip "Hugo extended version is recommended" >}}
-Since some features of this theme need to processes :(fab fa-sass fa-fw): SCSS to :(fab fa-css3 fa-fw): CSS, it is recommended to use Hugo **extended** version for better experience.
+{{< admonition tip "Hugo extended version is needed" >}}
+Since some features of this theme need to processes :(fab fa-sass fa-fw): SCSS to :(fab fa-css3 fa-fw): CSS, it needs to use Hugo **extended** version.
 {{< /admonition >}}
 
 ## 2 Installation
@@ -52,32 +52,32 @@ cd my_website
 
 ### 2.2 Install the Theme
 
-The **LoveIt** theme’s repository is: [https://github.com/dillonzq/LoveIt](https://github.com/dillonzq/LoveIt).
+The **LikeIt** theme’s repository is: [https://github.com/st1020/LikeIt](https://github.com/st1020/LikeIt).
 
-You can download the [latest release :(far fa-file-archive fa-fw): .zip file](https://github.com/dillonzq/LoveIt/releases) of the theme and extract it in the `themes` directory.
+You can download the [latest release :(far fa-file-archive fa-fw): .zip file](https://github.com/st1020/LikeIt/releases) of the theme and extract it in the `themes` directory.
 
 Alternatively, clone this repository to the `themes` directory:
 
 ```bash
-git clone https://github.com/dillonzq/LoveIt.git themes/LoveIt
+git clone https://github.com/st1020/LikeIt.git themes/LikeIt
 ```
 
 Or, create an empty git repository and make this repository a submodule of your site directory:
 
 ```bash
 git init
-git submodule add https://github.com/dillonzq/LoveIt.git themes/LoveIt
+git submodule add https://github.com/st1020/LikeIt.git themes/LikeIt
 ```
 
 ### 2.3 Basic Configuration {#basic-configuration}
 
-The following is a basic configuration for the LoveIt theme:
+The following is a basic configuration for the LikeIt theme:
 
 ```toml
 baseURL = "http://example.org/"
 
 # Change the default theme to be use when building the site with Hugo
-theme = "LoveIt"
+theme = "LikeIt"
 
 # website title
 title = "My New Hugo Site"
@@ -193,7 +193,7 @@ Alternatively, you can use [AWS Amplify](https://gohugo.io/hosting-and-deploymen
 
 ### 3.1 Site Configuration {#site-configuration}
 
-In addition to [Hugo global configuration](https://gohugo.io/overview/configuration/) and [menu configuration](#basic-configuration), **LoveIt** lets you define the following parameters in your site configuration (here is a `config.toml`, whose values are default).
+In addition to [Hugo global configuration](https://gohugo.io/overview/configuration/) and [menu configuration](#basic-configuration), **LikeIt** lets you define the following parameters in your site configuration (here is a `config.toml`, whose values are default).
 
 Please open the code block below to view the complete sample configuration :(far fa-hand-point-down fa-fw)::
 
@@ -201,7 +201,7 @@ Please open the code block below to view the complete sample configuration :(far
 baseURL = "http://example.org/"
 
 # Change the default theme to be use when building the site with Hugo
-theme = "LoveIt"
+theme = "LikeIt"
 
 # website title
 title = "My New Hugo Site"
@@ -299,8 +299,6 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       pre = ""
       # you can add extra information after the name (HTML format is supported), such as icons
       post = ""
-      # whether to use typeit animation for title name
-      typeit = false
 
   # Footer config
   [params.footer]
@@ -356,24 +354,16 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
   # Search config
   [params.search]
     enable = true
-    # type of search engine ["lunr", "algolia"]
-    type = "lunr"
     # max index length of the chunked content
     contentLength = 4000
     # placeholder of the search bar
     placeholder = ""
     # max number of results length
     maxResultLength = 10
-    # snippet length of the result
-    snippetLength = 30
     # HTML tag name of the highlight part in results
     highlightTag = "em"
     # whether to use the absolute URL based on the baseURL in search index
     absoluteURL = false
-    [params.search.algolia]
-      index = ""
-      appID = ""
-      searchKey = ""
 
   # Home page config
   [params.home]
@@ -390,8 +380,6 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       title = ""
       # subtitle shown in home page (HTML format is supported)
       subtitle = "This is My New Hugo Site"
-      # whether to use typeit animation for subtitle
-      typeit = true
       # whether to show social links
       social = true
       # disclaimer (HTML format is supported)
@@ -525,85 +513,14 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       copy = true
       # the maximum number of lines of displayed code by default
       maxShownLines = 50
-    # config
-    [params.page.mapbox]
-      # access token of Mapbox GL JS
-      accessToken = ""
-      # style for the light theme
-      lightStyle = "mapbox://styles/mapbox/light-v10?optimize=true"
-      # style for the dark theme
-      darkStyle = "mapbox://styles/mapbox/dark-v10?optimize=true"
-      # whether to add https://docs.mapbox.com/mapbox-gl-js/api#navigationcontrol
-      navigation = true
-      # whether to add https://docs.mapbox.com/mapbox-gl-js/api#geolocatecontrol
-      geolocate = true
-      # whether to add https://docs.mapbox.com/mapbox-gl-js/api#scalecontrol
-      scale = true
-      # whether to add https://docs.mapbox.com/mapbox-gl-js/api#fullscreencontrol
-      fullscreen = true
-    # social share links in post page
-    [params.page.share]
-      enable = true
-      Twitter = true
-      Facebook = true
-      Linkedin = false
-      Whatsapp = false
-      Pinterest = false
-      Tumblr = false
-      HackerNews = true
-      Reddit = false
-      VK = false
-      Buffer = false
-      Xing = false
-      Line = true
-      Instapaper = false
-      Pocket = false
-      Flipboard = false
-      Weibo = true
-      Blogger = false
-      Baidu = false
-      Odnoklassniki = false
-      Evernote = false
-      Skype = false
-      Trello = false
-      Mix = false
     # Comment config
     [params.page.comment]
       enable = false
       # https://disqus.com/ comment config
       [params.page.comment.disqus]
-                enable = false
+        enable = false
         # Disqus shortname to use Disqus in posts
         shortname = ""
-      # https://github.com/gitalk/gitalk comment config
-      [params.page.comment.gitalk]
-                enable = false
-        owner = ""
-        repo = ""
-        clientId = ""
-        clientSecret = ""
-      # https://github.com/xCss/Valine comment config
-      [params.page.comment.valine]
-        enable = false
-        appId = ""
-        appKey = ""
-        placeholder = ""
-        avatar = "mp"
-        meta= ""
-        pageSize = 10
-        # automatically adapt the current theme i18n configuration when empty
-        lang = ""
-        visitor = true
-        recordIP = true
-        highlight = true
-        enableQQ = false
-        serverURLs = ""
-        # emoji data file name, default is "google.yml"
-        # ["apple.yml", "google.yml", "facebook.yml", "twitter.yml"]
-        # located in "themes/LoveIt/assets/lib/valine/emoji/" directory
-        # you can store your own data files in the same path under your project:
-        # "assets/lib/valine/emoji/"
-        emoji = ""
       # https://developers.facebook.com/docs/plugins/comments config
       [params.page.comment.facebook]
         enable = false
@@ -672,17 +589,6 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
         name = ""
         logoUrl = ""
 
-  # TypeIt config
-  [params.typeit]
-    # typing speed between each step (measured in milliseconds)
-    speed = 100
-    # blinking speed of the cursor (measured in milliseconds)
-    cursorSpeed = 1000
-    # character used for the cursor (HTML format is supported)
-    cursorChar = "|"
-    # cursor duration after typing finishing (measured in milliseconds, "-1" means unlimited)
-    duration = -1
-
   # Site verification code config for Google/Bing/Yandex/Pinterest/Baidu
   [params.verification]
     google = ""
@@ -718,30 +624,14 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     [params.analytics.yandexMetrica]
       id = ""
 
-  # Cookie consent config
-  [params.cookieconsent]
-    enable = true
-    # text strings used for Cookie consent banner
-    [params.cookieconsent.content]
-      message = ""
-      dismiss = ""
-      link = ""
-
   # CDN config for third-party library files
   [params.cdn]
     # CDN data file name, disabled by default
     # ["jsdelivr.yml"]
-    # located in "themes/LoveIt/assets/data/cdn/" directory
+    # located in "themes/LikeIt/assets/data/cdn/" directory
     # you can store your own data files in the same path under your project:
     # "assets/data/cdn/"
     data = ""
-
-  # Compatibility config
-  [params.compatibility]
-    # whether to use Polyfill.io to be compatible with older browsers
-    polyfill = false
-    # whether to use object-fit-images to be compatible with older browsers
-    objectFit = false
 
 # Markup related config in Hugo
 [markup]
@@ -806,7 +696,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
 
 # Options to make hugo output files
 [outputs]
-    home = ["HTML", "RSS", "JSON"]
+  home = ["HTML", "RSS", "JSON"]
   page = ["HTML", "MarkDown"]
   section = ["HTML", "RSS"]
   taxonomy = ["HTML", "RSS"]
@@ -835,7 +725,7 @@ You could enable these features with `hugo serve -e production`.
   data = ""
 ````
 
-The default CDN data file is located in `themes/LoveIt/assets/data/cdn/` directory.
+The default CDN data file is located in `themes/LikeIt/assets/data/cdn/` directory.
 You can store your own data file in the same path under your project: `assets/data/cdn/`.
 {{< /admonition >}}
 
@@ -865,7 +755,7 @@ Or You can set more options through a dict:
     title = "Mastodon"
 ```
 
-The default data of all supported social links is located in `themes/LoveIt/assets/data/social.yaml`,
+The default data of all supported social links is located in `themes/LikeIt/assets/data/social.yaml`,
 which is you can refer to.
 {{< /admonition >}}
 
@@ -893,11 +783,11 @@ Customize `browserconfig.xml` and `site.webmanifest` to set theme-color and back
 Hugo **extended** version is necessary for the style customization.
 {{< /admonition >}}
 
-**LoveIt** theme has been built to be as configurable as possible by defining custom `.scss` style files.
+**LikeIt** theme has been built to be as configurable as possible by defining custom `.scss` style files.
 
 The directory including the custom `.scss` style files is `assets/css` relative to **your project root directory**.
 
-In `assets/css/_override.scss`, you can override the variables in `themes/LoveIt/assets/css/_variables.scss` to customize the style.
+In `assets/css/_override.scss`, you can override the variables in `themes/LikeIt/assets/css/_variables.scss` to customize the style.
 
 Here is a example:
 
@@ -910,37 +800,37 @@ In `assets/css/_custom.scss`, you can add some css style code to customize the s
 
 ## 4 Multilingual and i18n
 
-**LoveIt** theme is fully compatible with Hugo multilingual mode, which provides in-browser language switching.
+**LikeIt** theme is fully compatible with Hugo multilingual mode, which provides in-browser language switching.
 
 ![Language Switch](language-switch.gif "Language Switch")
 
 ### 4.1 Compatibility {#language-compatibility}
 
 
-| Language             | Hugo Code | HTML `lang` Attribute | Theme Docs                    | Lunr.js Support               |
-|:-------------------- |:---------:|:---------------------:|:-----------------------------:|:-----------------------------:|
-| English              | `en`      | `en`                  | :(far fa-check-square fa-fw): | :(far fa-check-square fa-fw): |
-| Simplified Chinese   | `zh-cn`   | `zh-CN`               | :(far fa-check-square fa-fw): | :(far fa-check-square fa-fw): |
-| Traditional Chinese  | `zh-tw`   | `zh-TW`               | :(far fa-square fa-fw):       | :(far fa-check-square fa-fw): |
-| French               | `fr`      | `fr`                  | :(far fa-square fa-fw):       | :(far fa-check-square fa-fw): |
-| Polish               | `pl`      | `pl`                  | :(far fa-square fa-fw):       | :(far fa-square fa-fw):       |
-| Brazilian Portuguese | `pt-br`   | `pt-BR`               | :(far fa-square fa-fw):       | :(far fa-check-square fa-fw): |
-| Italian              | `it`      | `it`                  | :(far fa-square fa-fw):       | :(far fa-check-square fa-fw): |
-| Spanish              | `es`      | `es`                  | :(far fa-square fa-fw):       | :(far fa-check-square fa-fw): |
-| German               | `de`      | `de`                  | :(far fa-square fa-fw):       | :(far fa-check-square fa-fw): |
-| German               | `de`      | `de`                  | :(far fa-square fa-fw):       | :(far fa-check-square fa-fw): |
-| Serbian              | `sr`      | `sr`                  | :(far fa-square fa-fw):       | :(far fa-square fa-fw):       |
-| Russian              | `ru`      | `ru`                  | :(far fa-square fa-fw):       | :(far fa-check-square fa-fw): |
-| Romanian             | `ro`      | `ro`                  | :(far fa-square fa-fw):       | :(far fa-check-square fa-fw): |
-| Vietnamese           | `vi`      | `vi`                  | :(far fa-square fa-fw):       | :(far fa-check-square fa-fw): |
-| Arabic               | `ar`      | `ar`                  | :(far fa-square fa-fw):       | :(far fa-check-square fa-fw): |
-| Catalan              | `ca`      | `ca`                  | :(far fa-square fa-fw):       | :(far fa-square fa-fw):       |
-| Thai                 | `th`      | `th`                  | :(far fa-square fa-fw):       | :(far fa-check-square fa-fw): |
-| Telugu               | `te`      | `te`                  | :(far fa-square fa-fw):       | :(far fa-square fa-fw):       |
-| Indonesian           | `id`      | `id`                  | :(far fa-square fa-fw):       | :(far fa-square fa-fw):       |
-| Turkish              | `tr`      | `tr`                  | :(far fa-square fa-fw):       | :(far fa-check-square fa-fw): |
-| Korean               | `ko`      | `ko`                  | :(far fa-square fa-fw):       | :(far fa-square fa-fw):       |
-| Hindi                | `hi`      | `hi`                  | :(far fa-square fa-fw):       | :(far fa-square fa-fw):       |
+| Language             | Hugo Code | HTML `lang` Attribute | Theme Docs                    |
+|:-------------------- |:---------:|:---------------------:|:-----------------------------:|
+| English              | `en`      | `en`                  | :(far fa-check-square fa-fw): |
+| Simplified Chinese   | `zh-cn`   | `zh-CN`               | :(far fa-check-square fa-fw): |
+| Traditional Chinese  | `zh-tw`   | `zh-TW`               | :(far fa-square fa-fw):       |
+| French               | `fr`      | `fr`                  | :(far fa-square fa-fw):       |
+| Polish               | `pl`      | `pl`                  | :(far fa-square fa-fw):       |
+| Brazilian Portuguese | `pt-br`   | `pt-BR`               | :(far fa-square fa-fw):       |
+| Italian              | `it`      | `it`                  | :(far fa-square fa-fw):       |
+| Spanish              | `es`      | `es`                  | :(far fa-square fa-fw):       |
+| German               | `de`      | `de`                  | :(far fa-square fa-fw):       |
+| German               | `de`      | `de`                  | :(far fa-square fa-fw):       |
+| Serbian              | `sr`      | `sr`                  | :(far fa-square fa-fw):       |
+| Russian              | `ru`      | `ru`                  | :(far fa-square fa-fw):       |
+| Romanian             | `ro`      | `ro`                  | :(far fa-square fa-fw):       |
+| Vietnamese           | `vi`      | `vi`                  | :(far fa-square fa-fw):       |
+| Arabic               | `ar`      | `ar`                  | :(far fa-square fa-fw):       |
+| Catalan              | `ca`      | `ca`                  | :(far fa-square fa-fw):       |
+| Thai                 | `th`      | `th`                  | :(far fa-square fa-fw):       |
+| Telugu               | `te`      | `te`                  | :(far fa-square fa-fw):       |
+| Indonesian           | `id`      | `id`                  | :(far fa-square fa-fw):       |
+| Turkish              | `tr`      | `tr`                  | :(far fa-square fa-fw):       |
+| Korean               | `ko`      | `ko`                  | :(far fa-square fa-fw):       |
+| Hindi                | `hi`      | `hi`                  | :(far fa-square fa-fw):       |
 
 ### 4.2 Basic Configuration
 
@@ -1065,14 +955,14 @@ Use [Front Matter parameter](https://gohugo.io/content-management/multilingual#t
 
 Translations strings are used for common default values used in the theme. Translations are available in [some languages](#language-compatibility), but you may use another language or want to override default values.
 
-To override these values, create a new file in your local i18n folder `i18n/<languageCode>.toml` and inspire yourself from `themes/LoveIt/i18n/en.toml`.
+To override these values, create a new file in your local i18n folder `i18n/<languageCode>.toml` and inspire yourself from `themes/LikeIt/i18n/en.toml`.
 
-By the way, as these translations could be used by other people, please take the time to propose a translation by [:(fas fa-code-branch fa-fw): making a PR](https://github.com/dillonzq/LoveIt/pulls) to the theme!
+By the way, as these translations could be used by other people, please take the time to propose a translation by [:(fas fa-code-branch fa-fw): making a PR](https://github.com/st1020/LikeIt/pulls) to the theme!
 
 ## 5 Search
 
 
-Based on [Lunr.js](https://lunrjs.com/) or [algolia](https://www.algolia.com/), searching is supported in **LoveIt** theme.
+Based on [Lunr.js](https://lunrjs.com/) or [algolia](https://www.algolia.com/), searching is supported in **LikeIt** theme.
 
 ### 5.1 Output Configuration
 
@@ -1092,41 +982,14 @@ Here is the search configuration in your [site configuration](#site-configuratio
 ```toml
 [params.search]
   enable = true
-  # type of search engine ["lunr", "algolia"]
-  type = "lunr"
   # max index length of the chunked content
   contentLength = 4000
   # placeholder of the search bar
   placeholder = ""
   # max number of results length
   maxResultLength = 10
-  # snippet length of the result
-  snippetLength = 30
   # HTML tag name of the highlight part in results
   highlightTag = "em"
   # whether to use the absolute URL based on the baseURL in search index
   absoluteURL = false
-  [params.search.algolia]
-    index = ""
-    appID = ""
-    searchKey = ""
 ```
-
-{{< admonition note "How to choose search engine?" >}}
-The following is a comparison of two search engines:
-
-* `lunr`: simple, no need to synchronize `index.json`, no limit for `contentLength`,
-  but high bandwidth and low performance (Especially for Chinese which needs a large segmentit library)
-* `algolia`: high performance and low bandwidth, but need to synchronize `index.json` and limit for `contentLength`
-
-The content of the post is separated by `h2` and `h3` HTML tag to improve query performance and basically implement full-text search.
-`contentLength` is used to limit the max index length of the part starting with `h2` and `h3` HTML tag.
-{{< /admonition >}}
-
-{{< admonition tip "Tips about algolia" >}}
-You need to upload `index.json` files to algolia to activate searching.
-You could upload the `index.json` files by browsers but a CLI tool may be better.
-The official [Algolia CLI](https://github.com/algolia/algolia-cli) is a good choice.
-To be compatible with Hugo multilingual mode,
-you need to upload different `index.json` for each language to the different index of algolia, such as `zh-cn/index.json` or `fr/index.json`...
-{{< /admonition >}}

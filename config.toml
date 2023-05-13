@@ -322,33 +322,6 @@ copyTex = true
 # KaTeX extension mhchem
 # KaTeX 插件 mhchem
 mhchem = true
-[params.page.share]
-enable = true
-Twitter = true
-Facebook = true
-Linkedin = false
-Whatsapp = false
-Pinterest = false
-Tumblr = false
-HackerNews = true
-Reddit = false
-VK = false
-Buffer = false
-Xing = false
-Line = true
-Instapaper = false
-Pocket = false
-Flipboard = false
-Weibo = true
-Blogger = false
-Baidu = false
-Odnoklassniki = false
-Evernote = false
-Skype = false
-Trello = false
-Mix = false
-# Comment config
-# 评论系统设置
 [params.page.comment]
 enable = false
 # Disqus comment config (https://disqus.com/)

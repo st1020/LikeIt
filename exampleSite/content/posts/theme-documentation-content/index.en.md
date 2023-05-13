@@ -6,7 +6,7 @@ lastmod: 2020-03-05T15:58:26+08:00
 draft: false
 author: "Dillon"
 authorLink: "https://dillonzq.com"
-description: "Find out how to create and organize your content quickly and intuitively in LoveIt theme."
+description: "Find out how to create and organize your content quickly and intuitively in LikeIt theme."
 images: []
 resources:
 - name: "featured-image"
@@ -21,7 +21,7 @@ math:
   enable: true
 ---
 
-Find out how to create and organize your content quickly and intuitively in **LoveIt** theme.
+Find out how to create and organize your content quickly and intuitively in **LikeIt** theme.
 
 <!--more-->
 
@@ -47,7 +47,7 @@ There are three ways to reference local resources such as **images** and **music
 The **priority** of references is also in the above order.
 
 There are many places in the theme where the above local resource references can be used,
-such as **links**, **images**, `image` shortcode, `music` shortcode and some params in the **front matter**.
+such as **links**, **images** and some params in the **front matter**.
 
 Images in page resources or assets directory [processing](https://gohugo.io/content-management/image-processing/)
 will be supported in the future.
@@ -102,8 +102,6 @@ code:
 math:
   enable: false
   # ...
-mapbox:
-  # ...
 share:
   enable: true
   # ...
@@ -156,7 +154,6 @@ seo:
 * **toc**: the same as the `params.page.toc` part in the [site configuration](../theme-documentation-basics#site-configuration).
 * **code**: the same as the `params.page.code` part in the [site configuration](../theme-documentation-basics#site-configuration).
 * **math**: the same as the `params.page.math` part in the [site configuration](../theme-documentation-basics#site-configuration).
-* **mapbox**: the same as the `params.page.mapbox` part in the [site configuration](../theme-documentation-basics#site-configuration).
 * **share**: the same as the `params.page.share` part in the [site configuration](../theme-documentation-basics#site-configuration).
 * **comment**: the same as the `params.page.comment` part in the [site configuration](../theme-documentation-basics#site-configuration).
 * **library**: the same as the `params.page.library` part in the [site configuration](../theme-documentation-basics#site-configuration).
@@ -176,11 +173,12 @@ resources:
 - name: featured-image-preview
   src: featured-image-preview.jpg
 ```
+
 {{< /admonition >}}
 
 ## 3 Content Summaries
 
-**LoveIt** theme uses the summary of the content to display abstract information in the home page. Hugo can generate summaries of your content.
+**LikeIt** theme uses the summary of the content to display abstract information in the home page. Hugo can generate summaries of your content.
 
 ![Summary Preview](summary.png "Summary Preview")
 
@@ -210,7 +208,7 @@ You might want your summary to be something other than the text that starts the 
 
 You might want your description in the `description` variable of the article front matter as the summary.
 
-You may add the `<!--more-->` summary divider at the start of the article. Keep content that comes before the summary divider empty. Then **LoveIt** theme will use your description as the summary.
+You may add the `<!--more-->` summary divider at the start of the article. Keep content that comes before the summary divider empty. Then **LikeIt** theme will use your description as the summary.
 
 ### Priority Order of Summary Selection
 
@@ -231,7 +229,7 @@ This part is shown in the [basic markdown syntax page](../basic-markdown-syntax/
 
 ## 5 Extended Markdown Syntax {#extended-markdown-syntax}
 
-**LoveIt** theme has some extended syntax elements for you to write articles.
+**LikeIt** theme has some extended syntax elements for you to write articles.
 
 ### Emoji Support
 
@@ -239,8 +237,7 @@ This part is shown in the [emoji support page](../emoji-support/).
 
 ### Mathematical Formula
 
-
-**LoveIt** theme supports mathematical formulas based on [$\KaTeX$](https://katex.org/).
+**LikeIt** theme supports mathematical formulas based on [$\KaTeX$](https://katex.org/).
 
 Set the property `enable = true` under `[params.math]` in your [site configuration](../theme-documentation-basics#site-configuration)
 and the property `math: true` of the article front matter to enable the automatic rendering of mathematical formulas.
@@ -265,7 +262,7 @@ therefore, additional escape character expressions are required for these places
 * `\]` -> `\\]`
 * `\\` -> `\\\\`
 
-**LoveIt** theme supports [`raw` shortcode](../theme-documentation-extended-shortcodes#12-raw) to avoid these escape characters,
+**LikeIt** theme supports [`raw` shortcode](../theme-documentation-extended-shortcodes#12-raw) to avoid these escape characters,
 which helps you write raw mathematical formula content.
 
 Example `raw` input:
@@ -428,7 +425,7 @@ $$ \ce{Hg^2+ ->[I-] HgI2 ->[I-] [Hg^{II}I4]^2-} $$
 
 ### Ruby Annotation {#ruby}
 
-An extended Markdown syntax for **ruby annotation** is supported in **LoveIt** theme:
+An extended Markdown syntax for **ruby annotation** is supported in **LikeIt** theme:
 
 ```markdown
 [Hugo]{?^}(An open-source static site generator)
@@ -440,8 +437,7 @@ The rendered output looks like this:
 
 ### Fraction {#fraction}
 
-
-An extended Markdown syntax for **fraction** is supported in **LoveIt** theme:
+An extended Markdown syntax for **fraction** is supported in **LikeIt** theme:
 
 ```markdown
 [Light]{?/}[Dark]
@@ -457,7 +453,7 @@ The rendered output looks like this:
 
 ### Font Awesome {#fontawesome}
 
-**LoveIt** theme uses [Font Awesome](https://fontawesome.com/) as the icon library.
+**LikeIt** theme uses [Font Awesome](https://fontawesome.com/) as the icon library.
 You can easily use these icons in your articles.
 
 Get the `class` of icons you wanted from the [Font Awesome website](https://fontawesome.com/icons?d=gallery).
@@ -508,3 +504,31 @@ Another example is:
 The rendered output looks like this:
 
 **[link{?]}(#escape-character)** instead of **[link](#escape-character)**.
+
+### Mermaid {#mermaid}
+
+[mermaid](https://mermaid.js.org/) is a library helping you to generate diagram and flowcharts from text, in a similar manner as Markdown.
+
+Just insert your mermaid code in the `mermaid` code block and that’s it:
+
+{{< highlight markdown >}}
+
+```mermaid
+graph LR;
+    A[Hard edge] -->|Link text| B(Round edge)
+    B --> C{Decision}
+    C -->|One| D[Result one]
+    C -->|Two| E[Result two]
+```
+
+{{< / highlight >}}
+
+The rendered output looks like this:
+
+```mermaid
+graph LR;
+    A[Hard edge] -->|Link text| B(Round edge)
+    B --> C{Decision}
+    C -->|One| D[Result one]
+    C -->|Two| E[Result two]
+```

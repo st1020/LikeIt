@@ -6,7 +6,7 @@ lastmod: 2020-03-05T16:30:05+08:00
 draft: false
 author: "Dillon"
 authorLink: "https://dillonzq.com"
-description: "了解如何在 LoveIt 主题中快速, 直观地创建和组织内容."
+description: "了解如何在 LikeIt 主题中快速, 直观地创建和组织内容."
 images: []
 resources:
 - name: "featured-image"
@@ -21,7 +21,7 @@ math:
   enable: true
 ---
 
-了解如何在 **LoveIt** 主题中快速, 直观地创建和组织内容.
+了解如何在 **LikeIt** 主题中快速, 直观地创建和组织内容.
 
 <!--more-->
 
@@ -47,7 +47,7 @@ math:
 引用的**优先级**符合以上的顺序.
 
 在这个主题中的很多地方可以使用上面的本地资源引用,
-例如 **链接**, **图片**, `image` shortcode, `music` shortcode 和**前置参数**中的部分参数.
+例如 **链接**, **图片**和**前置参数**中的部分参数.
 
 页面资源或者 **assets** 目录中的[图片处理](https://gohugo.io/content-management/image-processing/)会在未来的版本中得到支持.
 非常酷的功能! :(far fa-grin-squint fa-fw):
@@ -101,8 +101,6 @@ code:
 math:
   enable: false
   # ...
-mapbox:
-  # ...
 share:
   enable: true
   # ...
@@ -155,7 +153,6 @@ seo:
 * **toc**: 和 [网站配置](../theme-documentation-basics#site-configuration) 中的 `params.page.toc` 部分相同.
 * **code**: 和 [网站配置](../theme-documentation-basics#site-configuration) 中的 `params.page.code` 部分相同.
 * **math**: 和 [网站配置](../theme-documentation-basics#site-configuration) 中的 `params.page.math` 部分相同.
-* **mapbox**: 和 [网站配置](../theme-documentation-basics#site-configuration) 中的 `params.page.mapbox` 部分相同.
 * **share**: 和 [网站配置](../theme-documentation-basics#site-configuration) 中的 `params.page.share` 部分相同.
 * **comment**: 和 [网站配置](../theme-documentation-basics#site-configuration) 中的 `params.page.comment` 部分相同.
 * **library**: 和 [网站配置](../theme-documentation-basics#site-configuration) 中的 `params.page.library` 部分相同.
@@ -175,11 +172,12 @@ resources:
 - name: featured-image-preview
   src: featured-image-preview.jpg
 ```
+
 {{< /admonition >}}
 
 ## 3 内容摘要
 
-**LoveIt** 主题使用内容摘要在主页中显示大致文章信息。Hugo 支持生成文章的摘要.
+**LikeIt** 主题使用内容摘要在主页中显示大致文章信息。Hugo 支持生成文章的摘要.
 
 ![文章摘要预览](summary.zh-cn.png "文章摘要预览")
 
@@ -209,7 +207,7 @@ resources:
 
 你可能希望将文章前置参数中的 `description` 变量的内容作为摘要.
 
-你仍然需要在文章开头添加 `<!--more-->` 摘要分割符. 将摘要分隔符之前的内容保留为空. 然后 **LoveIt** 主题会将你的文章描述作为摘要.
+你仍然需要在文章开头添加 `<!--more-->` 摘要分割符. 将摘要分隔符之前的内容保留为空. 然后 **LikeIt** 主题会将你的文章描述作为摘要.
 
 ### 摘要选择的优先级顺序
 
@@ -230,7 +228,7 @@ resources:
 
 ## 5 Markdown 扩展语法 {#extended-markdown-syntax}
 
-**LoveIt** 主题提供了一些扩展的语法便于你撰写文章.
+**LikeIt** 主题提供了一些扩展的语法便于你撰写文章.
 
 ### Emoji 支持
 
@@ -238,8 +236,7 @@ resources:
 
 ### 数学公式
 
-
-**LoveIt** 基于 [$\KaTeX$](https://katex.org/) 提供数学公式的支持.
+**LikeIt** 基于 [$\KaTeX$](https://katex.org/) 提供数学公式的支持.
 
 在你的 [网站配置](../theme-documentation-basics#site-configuration) 中的 `[params.math]` 下面设置属性 `enable = true`,
 并在文章的前置参数中设置属性 `math: true`来启用数学公式的自动渲染.
@@ -263,7 +260,7 @@ resources:
 * `\]` -> `\\]`
 * `\\` -> `\\\\`
 
-**LoveIt** 主题支持 [`raw` shortcode](../theme-documentation-extended-shortcodes#12-raw) 以避免这些转义字符,
+**LikeIt** 主题支持 [`raw` shortcode](../theme-documentation-extended-shortcodes#12-raw) 以避免这些转义字符,
 它可以帮助您编写原始数学公式内容.
 
 一个 `raw` 示例:
@@ -426,7 +423,7 @@ $$ \ce{Hg^2+ ->[I-] HgI2 ->[I-] [Hg^{II}I4]^2-} $$
 
 ### 字符注音或者注释 {#ruby}
 
-**LoveIt** 主题支持一种 **字符注音或者注释** Markdown 扩展语法:
+**LikeIt** 主题支持一种 **字符注音或者注释** Markdown 扩展语法:
 
 ```markdown
 [Hugo]{?^}(一个开源的静态网站生成工具)
@@ -438,8 +435,7 @@ $$ \ce{Hg^2+ ->[I-] HgI2 ->[I-] [Hg^{II}I4]^2-} $$
 
 ### 分数 {#fraction}
 
-
-**LoveIt** 主题支持一种 **分数** Markdown 扩展语法:
+**LikeIt** 主题支持一种 **分数** Markdown 扩展语法:
 
 ```markdown
 [浅色]{?/}[深色]
@@ -455,7 +451,7 @@ $$ \ce{Hg^2+ ->[I-] HgI2 ->[I-] [Hg^{II}I4]^2-} $$
 
 ### Font Awesome {#fontawesome}
 
-**LoveIt** 主题使用 [Font Awesome](https://fontawesome.com/) 作为图标库.
+**LikeIt** 主题使用 [Font Awesome](https://fontawesome.com/) 作为图标库.
 你同样可以在文章中轻松使用这些图标.
 
 从 [Font Awesome 网站](https://fontawesome.com/icons?d=gallery) 上获取所需的图标 `class`.
@@ -506,3 +502,31 @@ $$ \ce{Hg^2+ ->[I-] HgI2 ->[I-] [Hg^{II}I4]^2-} $$
 呈现的输出效果如下:
 
 **[link{?]}(#escape-character)** 而不是 **[link](#escape-character)**.
+
+### Mermaid {#mermaid}
+
+[mermaid](https://mermaid.js.org/) 是一个可以帮助你在文章中绘制图表和流程图的库, 类似 Markdown 的语法.
+
+只需将你的 mermaid 代码插入 `mermaid` shortcode 中即可:
+
+{{< highlight markdown >}}
+
+```mermaid
+graph LR;
+    A[Hard edge] -->|Link text| B(Round edge)
+    B --> C{Decision}
+    C -->|One| D[Result one]
+    C -->|Two| E[Result two]
+```
+
+{{< / highlight >}}
+
+呈现的输出效果如下:
+
+```mermaid
+graph LR;
+    A[Hard edge] -->|Link text| B(Round edge)
+    B --> C{Decision}
+    C -->|One| D[Result one]
+    C -->|Two| E[Result two]
+```

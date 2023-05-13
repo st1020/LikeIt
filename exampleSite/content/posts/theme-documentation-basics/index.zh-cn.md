@@ -6,7 +6,7 @@ lastmod: 2020-03-06T21:40:32+08:00
 draft: false
 author: "Dillon"
 authorLink: "https://dillonzq.com"
-description: "探索 Hugo - LoveIt 主题的全部内容和背后的核心概念."
+description: "探索 Hugo - LikeIt 主题的全部内容和背后的核心概念."
 images: []
 resources:
 - name: "featured-image"
@@ -19,7 +19,7 @@ toc:
   auto: false
 ---
 
-探索 Hugo - **LoveIt** 主题的全部内容和背后的核心概念.
+探索 Hugo - **LikeIt** 主题的全部内容和背后的核心概念.
 
 <!--more-->
 
@@ -33,8 +33,8 @@ toc:
 由于 [Markdown 渲染钩子函数](https://gohugo.io/getting-started/configuration-markup#markdown-render-hooks) 在 [Hugo 圣诞节版本](https://gohugo.io/news/0.62.0-relnotes/) 中被引入, 本主题只支持高于 **0.62.0** 的 Hugo 版本.
 {{< /admonition >}}
 
-{{< admonition tip "推荐使用 Hugo extended 版本" >}}
-由于这个主题的一些特性需要将 :(fab fa-sass fa-fw): SCSS 转换为 :(fab fa-css3 fa-fw): CSS, 推荐使用 Hugo **extended** 版本来获得更好的使用体验.
+{{< admonition tip "需要使用 Hugo extended 版本" >}}
+由于这个主题的一些特性需要将 :(fab fa-sass fa-fw): SCSS 转换为 :(fab fa-css3 fa-fw): CSS, 需要使用 Hugo **extended** 版本.
 {{< /admonition >}}
 
 ## 2 安装
@@ -52,32 +52,32 @@ cd my_website
 
 ### 2.2 安装主题
 
-**LoveIt** 主题的仓库是: [https://github.com/dillonzq/LoveIt](https://github.com/dillonzq/LoveIt).
+**LikeIt** 主题的仓库是: [https://github.com/st1020/LikeIt](https://github.com/st1020/LikeIt).
 
-你可以下载主题的 [最新版本 :(far fa-file-archive fa-fw): .zip 文件](https://github.com/dillonzq/LoveIt/releases) 并且解压放到 `themes` 目录.
+你可以下载主题的 [最新版本 :(far fa-file-archive fa-fw): .zip 文件](https://github.com/st1020/LikeIt/releases) 并且解压放到 `themes` 目录.
 
 另外, 也可以直接把这个主题克隆到 `themes` 目录:
 
 ```bash
-git clone https://github.com/dillonzq/LoveIt.git themes/LoveIt
+git clone https://github.com/st1020/LikeIt.git themes/LikeIt
 ```
 
 或者, 初始化你的项目目录为 git 仓库, 并且把主题仓库作为你的网站目录的子模块:
 
 ```bash
 git init
-git submodule add https://github.com/dillonzq/LoveIt.git themes/LoveIt
+git submodule add https://github.com/st1020/LikeIt.git themes/LikeIt
 ```
 
 ### 2.3 基础配置 {#basic-configuration}
 
-以下是 LoveIt 主题的基本配置:
+以下是 LikeIt 主题的基本配置:
 
 ```toml
 baseURL = "http://example.org/"
 
 # 更改使用 Hugo 构建网站时使用的默认主题
-theme = "LoveIt"
+theme = "LikeIt"
 
 # 网站标题
 title = "我的全新 Hugo 网站"
@@ -129,7 +129,7 @@ hasCJKLanguage = true
 [markup]
   # 语法高亮设置 (https://gohugo.io/content-management/syntax-highlighting)
   [markup.highlight]
-    # false 是必要的设置 (https://github.com/dillonzq/LoveIt/issues/158)
+    # false 是必要的设置 (https://github.com/dillonzq/LoveIt/LikeItes/158)
     noClasses = false
 ```
 
@@ -195,7 +195,7 @@ hugo
 
 ### 3.1 网站配置 {#site-configuration}
 
-除了 [Hugo 全局配置](https://gohugo.io/overview/configuration/) 和 [菜单配置](#basic-configuration) 之外, **LoveIt** 主题还允许您在网站配置中定义以下参数 (这是一个示例 `config.toml`, 其内容为默认值).
+除了 [Hugo 全局配置](https://gohugo.io/overview/configuration/) 和 [菜单配置](#basic-configuration) 之外, **LikeIt** 主题还允许您在网站配置中定义以下参数 (这是一个示例 `config.toml`, 其内容为默认值).
 
 请打开下面的代码块查看完整的示例配置 :(far fa-hand-point-down fa-fw)::
 
@@ -203,7 +203,7 @@ hugo
 baseURL = "http://example.org/"
 
 # 更改使用 Hugo 构建网站时使用的默认主题
-theme = "LoveIt"
+theme = "LikeIt"
 
 # 网站标题
 title = "我的全新 Hugo 网站"
@@ -301,8 +301,6 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       pre = ""
       # 你可以在名称 (允许 HTML 格式) 之后添加其他信息, 例如图标
       post = ""
-      # 是否为标题显示打字机动画
-      typeit = false
 
   # 页面底部信息配置
   [params.footer]
@@ -358,24 +356,16 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
   # 搜索配置
   [params.search]
     enable = true
-    # 搜索引擎的类型 ["lunr", "algolia"]
-    type = "lunr"
     # 文章内容最长索引长度
     contentLength = 4000
     # 搜索框的占位提示语
     placeholder = ""
     # 最大结果数目
     maxResultLength = 10
-    # 结果内容片段长度
-    snippetLength = 50
     # 搜索结果中高亮部分的 HTML 标签
     highlightTag = "em"
     # 是否在搜索索引中使用基于 baseURL 的绝对路径
     absoluteURL = false
-    [params.search.algolia]
-      index = ""
-      appID = ""
-      searchKey = ""
 
   # 主页配置
   [params.home]
@@ -392,8 +382,6 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       title = ""
       # 主页显示的网站副标题 (允许 HTML 格式)
       subtitle = "这是我的全新 Hugo 网站"
-      # 是否为副标题显示打字机动画
-      typeit = true
       # 是否显示社交账号
       social = true
       # 免责声明 (支持 HTML 格式)
@@ -527,85 +515,14 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       copyTex = true
       # KaTeX 插件 mhchem
       mhchem = true
-    # 配置
-    [params.page.mapbox]
-      # Mapbox GL JS 的 access token
-      accessToken = ""
-      # 浅色主题的地图样式
-      lightStyle = "mapbox://styles/mapbox/light-v10?optimize=true"
-      # 深色主题的地图样式
-      darkStyle = "mapbox://styles/mapbox/dark-v10?optimize=true"
-      # 是否添加 https://docs.mapbox.com/mapbox-gl-js/api#navigationcontrol
-      navigation = true
-      # 是否添加 https://docs.mapbox.com/mapbox-gl-js/api#geolocatecontrol
-      geolocate = true
-      # 是否添加 https://docs.mapbox.com/mapbox-gl-js/api#scalecontrol
-      scale = true
-      # 是否添加 https://docs.mapbox.com/mapbox-gl-js/api#fullscreencontrol
-      fullscreen = true
-    # 文章页面的分享信息设置
-    [params.page.share]
-      enable = true
-      Twitter = true
-      Facebook = true
-      Linkedin = false
-      Whatsapp = false
-      Pinterest = false
-      Tumblr = false
-      HackerNews = true
-      Reddit = false
-      VK = false
-      Buffer = false
-      Xing = false
-      Line = true
-      Instapaper = false
-      Pocket = false
-      Flipboard = false
-      Weibo = true
-      Blogger = false
-      Baidu = false
-      Odnoklassniki = false
-      Evernote = false
-      Skype = false
-      Trello = false
-      Mix = false
     # 评论系统设置
     [params.page.comment]
       enable = false
       # https://disqus.com/ 评论系统设置
       [params.page.comment.disqus]
-                enable = false
+        enable = false
         # Disqus 的 shortname，用来在文章中启用 Disqus 评论系统
         shortname = ""
-      # https://github.com/gitalk/gitalk 评论系统设置
-      [params.page.comment.gitalk]
-                enable = false
-        owner = ""
-        repo = ""
-        clientId = ""
-        clientSecret = ""
-      # https://github.com/xCss/Valine 评论系统设置
-      [params.page.comment.valine]
-        enable = false
-        appId = ""
-        appKey = ""
-        placeholder = ""
-        avatar = "mp"
-        meta= ""
-        pageSize = 10
-        # 为空时自动适配当前主题 i18n 配置
-        lang = ""
-        visitor = true
-        recordIP = true
-        highlight = true
-        enableQQ = false
-        serverURLs = ""
-        # emoji 数据文件名称, 默认是 "google.yml"
-        # ["apple.yml", "google.yml", "facebook.yml", "twitter.yml"]
-        # 位于 "themes/LoveIt/assets/lib/valine/emoji/" 目录
-        # 可以在你的项目下相同路径存放你自己的数据文件:
-        # "assets/lib/valine/emoji/"
-        emoji = ""
       # https://developers.facebook.com/docs/plugins/comments设置
       [params.page.comment.facebook]
         enable = false
@@ -632,7 +549,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
         enable = false
         # owner/repo
         repo = ""
-        issueTerm = "pathname"
+        LikeIteTerm = "pathname"
         label = ""
         lightTheme = "github-light"
         darkTheme = "github-dark"
@@ -674,17 +591,6 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
         name = ""
         logoUrl = ""
 
-  # TypeIt 配置
-  [params.typeit]
-    # 每一步的打字速度 (单位是毫秒)
-    speed = 100
-    # 光标的闪烁速度 (单位是毫秒)
-    cursorSpeed = 1000
-    # 光标的字符 (支持 HTML 格式)
-    cursorChar = "|"
-    # 打字结束之后光标的持续时间 (单位是毫秒, "-1" 代表无限大)
-    duration = -1
-
   # 网站验证代码，用于 Google/Bing/Yandex/Pinterest/Baidu
   [params.verification]
     google = ""
@@ -720,30 +626,14 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     [params.analytics.yandexMetrica]
       id = ""
 
-  # Cookie 许可配置
-  [params.cookieconsent]
-    enable = true
-    # 用于 Cookie 许可横幅的文本字符串
-    [params.cookieconsent.content]
-      message = ""
-      dismiss = ""
-      link = ""
-
   # 第三方库文件的 CDN 设置
   [params.cdn]
     # CDN 数据文件名称, 默认不启用
     # ["jsdelivr.yml"]
-    # 位于 "themes/LoveIt/assets/data/cdn/" 目录
+    # 位于 "themes/LikeIt/assets/data/cdn/" 目录
     # 可以在你的项目下相同路径存放你自己的数据文件:
     # "assets/data/cdn/"
     data = ""
-
-  # 兼容性设置
-  [params.compatibility]
-    # 是否使用 Polyfill.io 来兼容旧式浏览器
-    polyfill = false
-    # 是否使用 object-fit-images 来兼容旧式浏览器
-    objectFit = false
 
 # Hugo 解析文档的配置
 [markup]
@@ -808,7 +698,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
 
 # 用于 Hugo 输出文档的设置
 [outputs]
-    home = ["HTML", "RSS", "JSON"]
+  home = ["HTML", "RSS", "JSON"]
   page = ["HTML", "MarkDown"]
   section = ["HTML", "RSS"]
   taxonomy = ["HTML", "RSS"]
@@ -838,7 +728,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
   data = ""
 ````
 
-默认的 CDN 数据文件位于 `themes/LoveIt/assets/data/cdn/` 目录.
+默认的 CDN 数据文件位于 `themes/LikeIt/assets/data/cdn/` 目录.
 可以在你的项目下相同路径存放你自己的数据文件: `assets/data/cdn/`.
 {{< /admonition >}}
 
@@ -868,7 +758,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
     title = "Mastodon"
 ```
 
-所有支持的社交链接的默认数据位于 `themes/LoveIt/assets/data/social.yaml`.
+所有支持的社交链接的默认数据位于 `themes/LikeIt/assets/data/social.yaml`.
 你可以参考它来配置你的社交链接.
 {{< /admonition >}}
 
@@ -896,11 +786,11 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
 Hugo **extended** 版本对于自定义样式是必需的.
 {{< /admonition >}}
 
-通过定义自定义 `.scss` 样式文件, **LoveIt** 主题支持可配置的样式.
+通过定义自定义 `.scss` 样式文件, **LikeIt** 主题支持可配置的样式.
 
 包含自定义 `.scss` 样式文件的目录相对于 **你的项目根目录** 的路径为 `assets/css`.
 
-在 `assets/css/_override.scss` 中, 你可以覆盖 `themes/LoveIt/assets/css/_variables.scss` 中的变量以自定义样式.
+在 `assets/css/_override.scss` 中, 你可以覆盖 `themes/LikeIt/assets/css/_variables.scss` 中的变量以自定义样式.
 
 这是一个例子:
 
@@ -913,36 +803,36 @@ $code-font-family: Fira Mono, Source Code Pro, Menlo, Consolas, Monaco, monospac
 
 ## 4 多语言和 i18n
 
-**LoveIt** 主题完全兼容 Hugo 的多语言模式, 并且支持在网页上切换语言.
+**LikeIt** 主题完全兼容 Hugo 的多语言模式, 并且支持在网页上切换语言.
 
 ![语言切换](language-switch.gif "语言切换")
 
 ### 4.1 兼容性 {#language-compatibility}
 
 
-| 语言 | Hugo 代码 | HTML `lang` 属性 | 主题文档 | Lunr.js 支持 |
-|:---- |:----:|:----:|:----:|:----:|
-| 英语 | `en` | `en` | :(far fa-check-square fa-fw): | :(far fa-check-square fa-fw): |
-| 简体中文 | `zh-cn` | `zh-CN` | :(far fa-check-square fa-fw): | :(far fa-check-square fa-fw): |
-| 繁體中文 | `zh-tw` | `zh-TW` | :(far fa-square fa-fw): | :(far fa-check-square fa-fw): |
-| 法语 | `fr` | `fr` | :(far fa-square fa-fw): | :(far fa-check-square fa-fw): |
-| 波兰语 | `pl` | `pl` | :(far fa-square fa-fw): | :(far fa-square fa-fw): |
-| 巴西葡萄牙语 | `pt-br` | `pt-BR` | :(far fa-square fa-fw): | :(far fa-check-square fa-fw): |
-| 意大利语 | `it` | `it` | :(far fa-square fa-fw): | :(far fa-check-square fa-fw): |
-| 西班牙语 | `es` | `es` | :(far fa-square fa-fw): | :(far fa-check-square fa-fw): |
-| 德语 | `de` | `de` | :(far fa-square fa-fw): | :(far fa-check-square fa-fw): |
-| 塞尔维亚语 | `pl` | `pl` | :(far fa-square fa-fw): | :(far fa-square fa-fw): |
-| 俄语 | `ru` | `ru` | :(far fa-square fa-fw): | :(far fa-check-square fa-fw): |
-| 罗马尼亚语 | `ro` | `ro` | :(far fa-square fa-fw): | :(far fa-check-square fa-fw): |
-| 越南语 | `vi` | `vi` | :(far fa-square fa-fw): | :(far fa-check-square fa-fw): |
-| 阿拉伯语 | `ar` | `ar` | :(far fa-square fa-fw): | :(far fa-check-square fa-fw): |
-| 加泰罗尼亚语 | `ca` | `ca` | :(far fa-square fa-fw): | :(far fa-square fa-fw): |
-| 泰语 | `th` | `th` | :(far fa-square fa-fw): | :(far fa-check-square fa-fw): |
-| 泰卢固语 | `te` | `te` | :(far fa-square fa-fw): | :(far fa-square fa-fw): |
-| 印尼语 | `id` | `id` | :(far fa-square fa-fw): | :(far fa-square fa-fw): |
-| 土耳其语 | `tr` | `tr` | :(far fa-square fa-fw): | :(far fa-check-square fa-fw): |
-| 韩语 | `ko` | `ko` | :(far fa-square fa-fw): | :(far fa-square fa-fw): |
-| 印地语 | `hi` | `hi` | :(far fa-square fa-fw): | :(far fa-square fa-fw): |
+| 语言 | Hugo 代码 | HTML `lang` 属性 | 主题文档 |
+|:---- |:----:|:----:|:----:|
+| 英语 | `en` | `en` | :(far fa-check-square fa-fw): |
+| 简体中文 | `zh-cn` | `zh-CN` | :(far fa-check-square fa-fw): |
+| 繁體中文 | `zh-tw` | `zh-TW` | :(far fa-square fa-fw): |
+| 法语 | `fr` | `fr` | :(far fa-square fa-fw): |
+| 波兰语 | `pl` | `pl` | :(far fa-square fa-fw): |
+| 巴西葡萄牙语 | `pt-br` | `pt-BR` | :(far fa-square fa-fw): |
+| 意大利语 | `it` | `it` | :(far fa-square fa-fw): |
+| 西班牙语 | `es` | `es` | :(far fa-square fa-fw): |
+| 德语 | `de` | `de` | :(far fa-square fa-fw): |
+| 塞尔维亚语 | `pl` | `pl` | :(far fa-square fa-fw): |
+| 俄语 | `ru` | `ru` | :(far fa-square fa-fw): |
+| 罗马尼亚语 | `ro` | `ro` | :(far fa-square fa-fw): |
+| 越南语 | `vi` | `vi` | :(far fa-square fa-fw): |
+| 阿拉伯语 | `ar` | `ar` | :(far fa-square fa-fw): |
+| 加泰罗尼亚语 | `ca` | `ca` | :(far fa-square fa-fw): |
+| 泰语 | `th` | `th` | :(far fa-square fa-fw): |
+| 泰卢固语 | `te` | `te` | :(far fa-square fa-fw): |
+| 印尼语 | `id` | `id` | :(far fa-square fa-fw): |
+| 土耳其语 | `tr` | `tr` | :(far fa-square fa-fw): |
+| 韩语 | `ko` | `ko` | :(far fa-square fa-fw): |
+| 印地语 | `hi` | `hi` | :(far fa-square fa-fw): |
 
 ### 4.2 基本配置
 
@@ -1068,14 +958,14 @@ defaultContentLanguage = "zh-cn"
 翻译字符串用于在主题中使用的常见默认值.
 目前提供[一些语言](#language-compatibility)的翻译, 但你可能自定义其他语言或覆盖默认值.
 
-要覆盖默认值, 请在你项目的 i18n 目录 `i18n/<languageCode>.toml` 中创建一个新文件，并从 `themes/LoveIt/i18n/en.toml` 中获得提示.
+要覆盖默认值, 请在你项目的 i18n 目录 `i18n/<languageCode>.toml` 中创建一个新文件，并从 `themes/LikeIt/i18n/en.toml` 中获得提示.
 
-另外, 由于你的翻译可能会帮助到其他人, 请花点时间通过 [:(fas fa-code-branch fa-fw): 创建一个 PR](https://github.com/dillonzq/LoveIt/pulls) 来贡献主题翻译, 谢谢!
+另外, 由于你的翻译可能会帮助到其他人, 请花点时间通过 [:(fas fa-code-branch fa-fw): 创建一个 PR](https://github.com/st1020/LikeIt/pulls) 来贡献主题翻译, 谢谢!
 
 ## 5 搜索
 
 
-基于 [Lunr.js](https://lunrjs.com/) 或 [algolia](https://www.algolia.com/), **LoveIt** 主题支持搜索功能.
+基于 [Lunr.js](https://lunrjs.com/) 或 [algolia](https://www.algolia.com/), **LikeIt** 主题支持搜索功能.
 
 ### 5.1 输出配置
 
@@ -1095,38 +985,14 @@ defaultContentLanguage = "zh-cn"
 ```toml
 [params.search]
   enable = true
-  # 搜索引擎的类型 ["lunr", "algolia"]
-  type = "lunr"
   # 文章内容最长索引长度
   contentLength = 4000
   # 搜索框的占位提示语
   placeholder = ""
   # 最大结果数目
   maxResultLength = 10
-  # 结果内容片段长度
-  snippetLength = 50
   # 搜索结果中高亮部分的 HTML 标签
   highlightTag = "em"
   # 是否在搜索索引中使用基于 baseURL 的绝对路径
   absoluteURL = false
-  [params.search.algolia]
-    index = ""
-    appID = ""
-    searchKey = ""
 ```
-
-{{< admonition note "怎样选择搜索引擎?" >}}
-以下是两种搜索引擎的对比:
-
-* `lunr`: 简单, 无需同步 `index.json`, 没有 `contentLength` 的限制, 但占用带宽大且性能低 (特别是中文需要一个较大的分词依赖库)
-* `algolia`: 高性能并且占用带宽低, 但需要同步 `index.json` 且有 `contentLength` 的限制
-
-文章内容被 `h2` 和 `h3` HTML 标签切分来提高查询效果并且基本实现全文搜索.
-`contentLength` 用来限制 `h2` 和 `h3` HTML 标签开头的内容部分的最大长度.
-{{< /admonition >}}
-
-{{< admonition tip "关于 algolia 的使用技巧" >}}
-你需要上传 `index.json` 到 algolia 来激活搜索功能. 你可以使用浏览器来上传 `index.json` 文件但是一个自动化的脚本可能效果更好.
-官方提供的 [Algolia CLI](https://github.com/algolia/algolia-cli) 是一个不错的选择.
-为了兼容 Hugo 的多语言模式, 你需要上传不同语言的 `index.json` 文件到对应的 algolia index, 例如 `zh-cn/index.json` 或 `fr/index.json`...
-{{< /admonition >}}

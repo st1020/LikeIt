@@ -6,7 +6,7 @@ lastmod: 2020-06-12T10:10:13+03:00
 draft: false
 author: "Dillon"
 authorLink: "https://dillonzq.com"
-description: "LoveIt theme provides multiple shortcodes on top of built-in ones in Hugo."
+description: "LikeIt theme provides multiple shortcodes on top of built-in ones in Hugo."
 images: []
 resources:
 - name: "featured-image"
@@ -21,7 +21,7 @@ math:
   enable: true
 ---
 
-**LoveIt** theme provides multiple shortcodes on top of built-in ones in Hugo.
+**LikeIt** theme provides multiple shortcodes on top of built-in ones in Hugo.
 
 <!--more-->
 
@@ -153,14 +153,14 @@ Example `script` input:
 
 ```markdown
 {{</* script */>}}
-console.log('Hello LoveIt!');
+console.log('Hello LikeIt!');
 {{</* /script */>}}
 ```
 
 You can see the output in the console of the developer tool.
 
 {{< script >}}
-console.log('Hello LoveIt!');
+console.log('Hello LikeIt!');
 {{< /script >}}
 
 ## 4 raw
@@ -193,7 +193,7 @@ Block Formula:
 {{< /raw >}}
 
 {{< script >}}
-console.log('Hello LoveIt!');
+console.log('Hello LikeIt!');
 {{< /script >}}
 
 Raw content using Markdown syntax: {{< raw >}}**Hello**{{< /raw >}}

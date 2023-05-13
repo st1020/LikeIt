@@ -6,7 +6,7 @@ lastmod: 2020-06-12T10:10:13+03:00
 draft: false
 author: "Dillon"
 authorLink: "https://dillonzq.com"
-description: "LoveIt 主题在 Hugo 内置的 shortcode 的基础上提供多个扩展的 shortcode."
+description: "LikeIt 主题在 Hugo 内置的 shortcode 的基础上提供多个扩展的 shortcode."
 images: []
 resources:
 - name: "featured-image"
@@ -21,7 +21,7 @@ math:
   enable: true
 ---
 
-**LoveIt** 主题在 Hugo 内置的 shortcode 的基础上提供多个扩展的 shortcode.
+**LikeIt** 主题在 Hugo 内置的 shortcode 的基础上提供多个扩展的 shortcode.
 
 <!--more-->
 
@@ -153,14 +153,14 @@ This is a **right-aligned** paragraph.
 
 ```markdown
 {{</* script */>}}
-console.log('Hello LoveIt!');
+console.log('Hello LikeIt!');
 {{</* /script */>}}
 ```
 
 你可以在开发者工具的控制台中看到输出.
 
 {{< script >}}
-console.log('Hello LoveIt!');
+console.log('Hello LikeIt!');
 {{< /script >}}
 
 ## 4 raw
